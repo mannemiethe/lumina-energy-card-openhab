@@ -1,0 +1,896 @@
+uid: lumina_energy_widget
+props:
+  parameters:
+    - name: title
+      label: Title
+      type: TEXT
+      default: Lumina Energy
+    - name: subtitle
+      label: Subtitle
+      type: TEXT
+      default: OpenHAB MainUI
+    - name: backgroundImage
+      label: Day Background Image URL
+      type: TEXT
+      default: /static/lumina/lumina_background1.png
+    - name: nightBackgroundImage
+      label: Night Background Image URL
+      type: TEXT
+      default: /static/lumina/lumina_background_real.png
+    - name: nightModeItem
+      label: Night Mode Item (Switch/Contact optional)
+      type: TEXT
+      default: Lumina_Night_Mode
+    - name: imageStyleItem
+      label: Real/Holographic Style Item (String optional)
+      type: TEXT
+      default: Lumina_Image_Style
+    - name: displayUnit
+      label: Display Unit
+      type: TEXT
+      default: kW
+    - name: flowThreshold
+      label: Flow Visibility Threshold (W)
+      type: INTEGER
+      default: 30
+
+    # Core values - mirrors the Home Assistant card entity model
+    - name: pvPowerItem
+      label: PV Total Power Item
+      type: TEXT
+      default: Lumina_PV_Power
+    - name: pvSecondaryPowerItem
+      label: PV Array 2 Total Power Item
+      type: TEXT
+      default: Lumina_PV_Array2_Power
+    - name: pvDailyItem
+      label: PV Daily Energy Item
+      type: TEXT
+      default: Lumina_PV_Daily
+    - name: pvDailyArray2Item
+      label: PV Array 2 Daily Energy Item
+      type: TEXT
+      default: Lumina_PV_Array2_Daily
+    - name: homeLoadItem
+      label: House Load Item
+      type: TEXT
+      default: Lumina_House_Load
+    - name: gridPowerItem
+      label: Grid Power Item (+import / -export)
+      type: TEXT
+      default: Lumina_Grid_Power
+    - name: gridImportDailyItem
+      label: Grid Import Daily Energy Item
+      type: TEXT
+      default: Lumina_Grid_Daily_Import
+    - name: gridExportDailyItem
+      label: Grid Export Daily Energy Item
+      type: TEXT
+      default: Lumina_Grid_Daily_Export
+    - name: batteryPowerItem
+      label: Battery Flow Item (+charge / -discharge)
+      type: TEXT
+      default: Lumina_Battery_Power
+    - name: batterySocItem
+      label: Battery Average SOC Item
+      type: TEXT
+      default: Lumina_Battery_SOC
+    - name: inverterPowerItem
+      label: Inverter Power Item
+      type: TEXT
+      default: Lumina_Inverter_Power
+
+    # PV strings (up to 9 + second array, like HA card)
+    - name: pv1Item
+      label: PV String 1 Item
+      type: TEXT
+      default: Lumina_PV_String_1
+    - name: pv2Item
+      label: PV String 2 Item
+      type: TEXT
+      default: Lumina_PV_String_2
+    - name: pv3Item
+      label: PV String 3 Item
+      type: TEXT
+      default: Lumina_PV_String_3
+    - name: pv4Item
+      label: PV String 4 Item
+      type: TEXT
+      default: Lumina_PV_String_4
+    - name: pv5Item
+      label: PV String 5 Item
+      type: TEXT
+      default: Lumina_PV_String_5
+    - name: pv6Item
+      label: PV String 6 Item
+      type: TEXT
+      default: Lumina_PV_String_6
+    - name: pv7Item
+      label: PV String 7 Item
+      type: TEXT
+      default: Lumina_PV_String_7
+    - name: pv8Item
+      label: PV String 8 Item
+      type: TEXT
+      default: Lumina_PV_String_8
+    - name: pv9Item
+      label: PV String 9 Item
+      type: TEXT
+      default: Lumina_PV_String_9
+    - name: pvArray2_1Item
+      label: PV Array 2 String 1 Item
+      type: TEXT
+      default: Lumina_PV_Array2_String_1
+    - name: pvArray2_2Item
+      label: PV Array 2 String 2 Item
+      type: TEXT
+      default: Lumina_PV_Array2_String_2
+    - name: pvArray2_3Item
+      label: PV Array 2 String 3 Item
+      type: TEXT
+      default: Lumina_PV_Array2_String_3
+
+    # Up to 4 batteries, same concept as HA component
+    - name: bat1SocItem
+      label: Battery 1 SOC Item
+      type: TEXT
+      default: Lumina_Battery_1_SOC
+    - name: bat1PowerItem
+      label: Battery 1 Power Item
+      type: TEXT
+      default: Lumina_Battery_1_Power
+    - name: bat2SocItem
+      label: Battery 2 SOC Item
+      type: TEXT
+      default: Lumina_Battery_2_SOC
+    - name: bat2PowerItem
+      label: Battery 2 Power Item
+      type: TEXT
+      default: Lumina_Battery_2_Power
+    - name: bat3SocItem
+      label: Battery 3 SOC Item
+      type: TEXT
+      default: Lumina_Battery_3_SOC
+    - name: bat3PowerItem
+      label: Battery 3 Power Item
+      type: TEXT
+      default: Lumina_Battery_3_Power
+    - name: bat4SocItem
+      label: Battery 4 SOC Item
+      type: TEXT
+      default: Lumina_Battery_4_SOC
+    - name: bat4PowerItem
+      label: Battery 4 Power Item
+      type: TEXT
+      default: Lumina_Battery_4_Power
+
+    # Optional loads / sources
+    - name: evPowerItem
+      label: EV Power Item
+      type: TEXT
+      default: Lumina_EV_Power
+    - name: evSocItem
+      label: EV SOC Item
+      type: TEXT
+      default: Lumina_EV_SOC
+    - name: ev2PowerItem
+      label: EV 2 Power Item
+      type: TEXT
+      default: Lumina_EV2_Power
+    - name: ev2SocItem
+      label: EV 2 SOC Item
+      type: TEXT
+      default: Lumina_EV2_SOC
+    - name: poolPowerItem
+      label: Pool Power Item
+      type: TEXT
+      default: Lumina_Pool_Power
+    - name: heatPumpPowerItem
+      label: Heat Pump Power Item
+      type: TEXT
+      default: Lumina_HeatPump_Power
+    - name: solarForecastItem
+      label: Solar Forecast Item
+      type: TEXT
+      default: Lumina_Solar_Forecast
+    - name: temperatureItem
+      label: House Temperature Item
+      type: TEXT
+      default: Lumina_House_Temperature
+    - name: humidityItem
+      label: House Humidity Item
+      type: TEXT
+      default: Lumina_House_Humidity
+
+    # Visibility toggles (ON = visible, OFF = hidden), equivalent to HA editor switches
+    - name: showPVItem
+      label: Show PV Item
+      type: TEXT
+      default: Lumina_Show_PV
+    - name: showGridItem
+      label: Show Grid Item
+      type: TEXT
+      default: Lumina_Show_Grid
+    - name: showBatteryItem
+      label: Show Battery Item
+      type: TEXT
+      default: Lumina_Show_Battery
+    - name: showEVItem
+      label: Show EV Item
+      type: TEXT
+      default: Lumina_Show_EV
+    - name: showEV2Item
+      label: Show EV 2 Item
+      type: TEXT
+      default: Lumina_Show_EV2
+    - name: showPoolItem
+      label: Show Pool Item
+      type: TEXT
+      default: Lumina_Show_Pool
+    - name: showHeatPumpItem
+      label: Show Heat Pump Item
+      type: TEXT
+      default: Lumina_Show_HeatPump
+    - name: showForecastItem
+      label: Show Solar Forecast Item
+      type: TEXT
+      default: Lumina_Show_Solar_Forecast
+    - name: showClockItem
+      label: Show Clock Item
+      type: TEXT
+      default: Lumina_Show_Clock
+    - name: showHomePanelItem
+      label: Show Home Panel Item
+      type: TEXT
+      default: Lumina_Show_Home_Panel
+    - name: textVisibilityItem
+      label: Text Visibility Item (ON=show/OFF=clean)
+      type: TEXT
+      default: Lumina_Text_Visible
+
+    # Overlay images, compatible with openHAB /html => /static
+    - name: batteryOverlayImage
+      label: Battery Overlay Image URL
+      type: TEXT
+      default: /static/lumina/battery.png
+    - name: carOverlayImage
+      label: Car Overlay Image URL
+      type: TEXT
+      default: /static/lumina/car.png
+    - name: poolOverlayImage
+      label: Pool Overlay Image URL
+      type: TEXT
+      default: /static/lumina/Pool.png
+    - name: turbineOverlayImage
+      label: Turbine Overlay Image URL
+      type: TEXT
+      default: /static/lumina/turbine.png
+  parameterGroups: []
+
+component: f7-card
+config:
+  class:
+    - lumina-energy-widget
+  style:
+    margin: 0
+    borderRadius: 22px
+    overflow: hidden
+    background: "linear-gradient(135deg, rgba(3,10,22,0.96), rgba(6,22,45,0.92))"
+    boxShadow: 0 12px 35px rgba(0,0,0,.45)
+slots:
+  default:
+    - component: f7-block
+      config:
+        class:
+          - lumina-stage
+        style:
+          position: relative
+          minHeight: 520px
+          height: 66vw
+          maxHeight: 720px
+          padding: 0
+          margin: 0
+          overflow: hidden
+          color: white
+          backgroundImage: "=(items[props.nightModeItem] && (items[props.nightModeItem].state === 'ON' || items[props.nightModeItem].state === 'OPEN')) ? `url(${props.nightBackgroundImage})` : `url(${props.backgroundImage})`"
+          backgroundSize: cover
+          backgroundPosition: center
+          fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+      slots:
+        default:
+          - component: f7-block
+            config:
+              style:
+                position: absolute
+                inset: 0
+                margin: 0
+                padding: 0
+                background: radial-gradient(circle at 50% 45%, rgba(0,255,255,.13), rgba(2,10,25,.28) 42%, rgba(0,0,0,.35) 100%)
+                pointerEvents: none
+
+          # Animated energy-flow layer. MainUI supports standard SVG/HTML components in widgets.
+          - component: svg
+            config:
+              viewBox: 0 0 800 520
+              preserveAspectRatio: none
+              style:
+                position: absolute
+                inset: 0
+                width: 100%
+                height: 100%
+                filter: drop-shadow(0 0 7px rgba(0,255,255,.45))
+                opacity: 0.95
+            slots:
+              default:
+                - component: defs
+                  slots:
+                    default:
+                      - component: linearGradient
+                        config:
+                          id: luminaFlowCyan
+                          x1: 0%
+                          y1: 0%
+                          x2: 100%
+                          y2: 0%
+                        slots:
+                          default:
+                            - component: stop
+                              config:
+                                offset: 0%
+                                stop-color: "#02f7ff"
+                                stop-opacity: .1
+                            - component: stop
+                              config:
+                                offset: 50%
+                                stop-color: "#7effff"
+                                stop-opacity: 1
+                            - component: stop
+                              config:
+                                offset: 100%
+                                stop-color: "#02f7ff"
+                                stop-opacity: .1
+                      - component: linearGradient
+                        config:
+                          id: luminaFlowGreen
+                          x1: 0%
+                          y1: 0%
+                          x2: 100%
+                          y2: 0%
+                        slots:
+                          default:
+                            - component: stop
+                              config:
+                                offset: 0%
+                                stop-color: "#2ecc71"
+                                stop-opacity: .15
+                            - component: stop
+                              config:
+                                offset: 50%
+                                stop-color: "#a6ff4d"
+                                stop-opacity: 1
+                            - component: stop
+                              config:
+                                offset: 100%
+                                stop-color: "#2ecc71"
+                                stop-opacity: .15
+                - component: path
+                  config:
+                    d: M155 95 C255 120 300 190 385 240
+                    fill: none
+                    stroke: url(#luminaFlowGreen)
+                    stroke-width: 5
+                    stroke-linecap: round
+                    stroke-dasharray: 10 16
+                    visible: "=Math.abs(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+                    style:
+                      animation: luminaDash 1.4s linear infinite
+                - component: path
+                  config:
+                    d: M650 110 C555 130 500 190 415 240
+                    fill: none
+                    stroke: "#00d7ff"
+                    stroke-width: 5
+                    stroke-linecap: round
+                    stroke-dasharray: 10 16
+                    visible: "=Math.abs(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0)) >= Number(props.flowThreshold || 30)"
+                    style:
+                      animation: luminaDash 1.6s linear infinite
+                - component: path
+                  config:
+                    d: M110 450 C220 390 285 320 385 262
+                    fill: none
+                    stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#ff9f1a' : '#4da3ff'"
+                    stroke-width: 5
+                    stroke-linecap: round
+                    stroke-dasharray: 10 16
+                    visible: "=Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+                    style:
+                      animation: luminaDash 1.2s linear infinite
+                - component: path
+                  config:
+                    d: M665 450 C555 390 500 320 415 262
+                    fill: none
+                    stroke: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ecc71' : '#f1c40f'"
+                    stroke-width: 5
+                    stroke-linecap: round
+                    stroke-dasharray: 10 16
+                    visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+                    style:
+                      animation: luminaDash 1.25s linear infinite
+                - component: path
+                  config:
+                    d: M635 245 C570 260 500 260 430 252
+                    fill: none
+                    stroke: "#ff4df0"
+                    stroke-width: 4
+                    stroke-linecap: round
+                    stroke-dasharray: 8 14
+                    visible: "=Math.abs(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && (items[props.showEVItem] && items[props.showEVItem].state === 'ON')"
+                    style:
+                      animation: luminaDash 1.1s linear infinite
+                - component: path
+                  config:
+                    d: M170 245 C240 260 310 260 380 252
+                    fill: none
+                    stroke: "#44ffe3"
+                    stroke-width: 4
+                    stroke-linecap: round
+                    stroke-dasharray: 8 14
+                    visible: "=Math.abs(Number.parseFloat((items[props.poolPowerItem] && items[props.poolPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && (items[props.showPoolItem] && items[props.showPoolItem].state === 'ON')"
+                    style:
+                      animation: luminaDash 1.1s linear infinite
+
+          # Header / clock
+          - component: f7-block
+            config:
+              style:
+                position: absolute
+                top: 12px
+                left: 50%
+                transform: translateX(-50%)
+                textAlign: center
+                margin: 0
+                padding: 0
+                textShadow: 0 0 16px rgba(0,255,255,.85)
+            slots:
+              default:
+                - component: Label
+                  config:
+                    text: =props.title
+                    style:
+                      display: block
+                      fontSize: 26px
+                      fontWeight: 800
+                      letterSpacing: 1px
+                      color: "#dffcff"
+                - component: Label
+                  config:
+                    text: =props.subtitle
+                    visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                    style:
+                      display: block
+                      marginTop: 2px
+                      fontSize: 12px
+                      color: rgba(220,255,255,.75)
+                - component: oh-clock-card
+                  config:
+                    visible: "=items[props.showClockItem] && items[props.showClockItem].state === 'ON'"
+                    style:
+                      marginTop: 6px
+                      background: transparent
+                      boxShadow: none
+                      color: "#00ffff"
+
+          # Decorative overlays
+          - component: img
+            config:
+              src: =props.batteryOverlayImage
+              visible: "=!(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+              style:
+                position: absolute
+                right: 9%
+                bottom: 18%
+                width: 125px
+                maxWidth: 18vw
+                opacity: .95
+                filter: drop-shadow(0 0 18px rgba(0,255,255,.55))
+                pointerEvents: none
+          - component: img
+            config:
+              src: =props.carOverlayImage
+              visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON'"
+              style:
+                position: absolute
+                right: 8%
+                top: 34%
+                width: 150px
+                maxWidth: 20vw
+                opacity: .94
+                filter: drop-shadow(0 0 18px rgba(255,77,240,.45))
+                pointerEvents: none
+          - component: img
+            config:
+              src: =props.poolOverlayImage
+              visible: "=items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 8%
+                top: 34%
+                width: 145px
+                maxWidth: 20vw
+                opacity: .92
+                filter: drop-shadow(0 0 18px rgba(68,255,227,.42))
+                pointerEvents: none
+          - component: img
+            config:
+              src: =props.turbineOverlayImage
+              visible: "=items[props.showForecastItem] && items[props.showForecastItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 47%
+                top: 17%
+                width: 80px
+                opacity: .78
+                filter: drop-shadow(0 0 16px rgba(0,255,255,.55))
+                pointerEvents: none
+
+          # Main tiles
+          - component: oh-label-card
+            config:
+              title: PV
+              item: =props.pvPowerItem
+              icon: f7:sun_max_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.pvPowerItem
+                - =props.pvDailyItem
+                - =props.pv1Item
+                - =props.pv2Item
+                - =props.pv3Item
+              visible: "=!(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              style:
+                position: absolute
+                top: 78px
+                left: 18px
+                width: 168px
+                background: rgba(7, 22, 31, .68)
+                border: 1px solid rgba(80,255,120,.42)
+                borderRadius: 16px
+                boxShadow: 0 0 20px rgba(80,255,120,.18)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: PV Today
+              item: =props.pvDailyItem
+              icon: f7:calendar
+              visible: "=!(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+              style:
+                position: absolute
+                top: 155px
+                left: 18px
+                width: 168px
+                background: rgba(7, 22, 31, .52)
+                borderRadius: 14px
+                backdropFilter: blur(5px)
+          - component: oh-label-card
+            config:
+              title: Inverter
+              item: =props.inverterPowerItem
+              icon: f7:bolt_circle_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.inverterPowerItem
+                - =props.pvPowerItem
+                - =props.homeLoadItem
+              style:
+                position: absolute
+                top: 220px
+                left: 50%
+                transform: translateX(-50%)
+                width: 175px
+                background: rgba(4, 18, 34, .74)
+                border: 1px solid rgba(0,255,255,.45)
+                borderRadius: 18px
+                boxShadow: 0 0 26px rgba(0,255,255,.22)
+                backdropFilter: blur(7px)
+          - component: oh-label-card
+            config:
+              title: House
+              item: =props.homeLoadItem
+              icon: f7:house_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.homeLoadItem
+                - =props.temperatureItem
+                - =props.humidityItem
+              style:
+                position: absolute
+                top: 78px
+                right: 18px
+                width: 168px
+                background: rgba(7, 22, 31, .68)
+                border: 1px solid rgba(0,215,255,.42)
+                borderRadius: 16px
+                boxShadow: 0 0 20px rgba(0,215,255,.18)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: Grid
+              item: =props.gridPowerItem
+              icon: f7:bolt_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.gridPowerItem
+                - =props.gridImportDailyItem
+                - =props.gridExportDailyItem
+              visible: "=!(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+              style:
+                position: absolute
+                bottom: 22px
+                left: 18px
+                width: 168px
+                background: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'rgba(230,126,34,.58)' : 'rgba(52,152,219,.58)'"
+                border: 1px solid rgba(255,255,255,.25)
+                borderRadius: 16px
+                boxShadow: 0 0 22px rgba(255,159,26,.20)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: Battery
+              item: =props.batteryPowerItem
+              icon: f7:battery_100
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.batteryPowerItem
+                - =props.batterySocItem
+                - =props.bat1PowerItem
+                - =props.bat2PowerItem
+                - =props.bat3PowerItem
+                - =props.bat4PowerItem
+              visible: "=!(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+              style:
+                position: absolute
+                bottom: 22px
+                right: 18px
+                width: 168px
+                background: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? 'rgba(46,204,113,.54)' : 'rgba(241,196,15,.54)'"
+                border: 1px solid rgba(255,255,255,.25)
+                borderRadius: 16px
+                boxShadow: 0 0 22px rgba(46,204,113,.20)
+                backdropFilter: blur(6px)
+          - component: oh-gauge-card
+            config:
+              title: SOC
+              item: =props.batterySocItem
+              min: 0
+              max: 100
+              unit: "%"
+              type: semicircle
+              visible: "=!(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 50%
+                transform: translateX(-50%)
+                bottom: 14px
+                width: 205px
+                background: rgba(4, 18, 34, .58)
+                borderRadius: 16px
+                backdropFilter: blur(5px)
+
+          # Optional tiles
+          - component: oh-label-card
+            config:
+              title: EV
+              item: =props.evPowerItem
+              icon: f7:car_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.evPowerItem
+                - =props.evSocItem
+              visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON'"
+              style:
+                position: absolute
+                top: 205px
+                right: 18px
+                width: 150px
+                background: rgba(110,20,105,.52)
+                borderRadius: 15px
+                border: 1px solid rgba(255,77,240,.35)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: EV 2
+              item: =props.ev2PowerItem
+              icon: f7:car_2_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.ev2PowerItem
+                - =props.ev2SocItem
+              visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON'"
+              style:
+                position: absolute
+                top: 285px
+                right: 18px
+                width: 150px
+                background: rgba(110,20,105,.46)
+                borderRadius: 15px
+                border: 1px solid rgba(255,77,240,.28)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: Pool
+              item: =props.poolPowerItem
+              icon: f7:drop_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.poolPowerItem
+              visible: "=items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
+              style:
+                position: absolute
+                top: 235px
+                left: 18px
+                width: 150px
+                background: rgba(0,120,150,.46)
+                borderRadius: 15px
+                border: 1px solid rgba(68,255,227,.32)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: Heat Pump
+              item: =props.heatPumpPowerItem
+              icon: f7:thermometer_snowflake
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.heatPumpPowerItem
+              visible: "=items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON'"
+              style:
+                position: absolute
+                top: 118px
+                left: 50%
+                transform: translateX(-50%)
+                width: 160px
+                background: rgba(0,180,255,.42)
+                borderRadius: 15px
+                border: 1px solid rgba(140,230,255,.35)
+                backdropFilter: blur(6px)
+          - component: oh-label-card
+            config:
+              title: Solar Forecast
+              item: =props.solarForecastItem
+              icon: f7:sun_haze_fill
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.solarForecastItem
+              visible: "=items[props.showForecastItem] && items[props.showForecastItem].state === 'ON'"
+              style:
+                position: absolute
+                top: 118px
+                left: 18px
+                width: 168px
+                background: rgba(0,255,255,.20)
+                borderRadius: 15px
+                border: 1px solid rgba(0,255,255,.35)
+                backdropFilter: blur(6px)
+
+          # Detail strips like HA popup summary, but always available on openHAB
+          - component: f7-block
+            config:
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 50%
+                bottom: 112px
+                transform: translateX(-50%)
+                width: min(520px, calc(100% - 44px))
+                margin: 0
+                padding: 10px 12px
+                display: grid
+                gridTemplateColumns: repeat(4, minmax(0, 1fr))
+                gap: 8px
+                background: rgba(2, 12, 26, .54)
+                border: 1px solid rgba(0,255,255,.20)
+                borderRadius: 16px
+                backdropFilter: blur(7px)
+            slots:
+              default:
+                - component: oh-label-card
+                  config:
+                    title: PV2
+                    item: =props.pvSecondaryPowerItem
+                    style:
+                      margin: 0
+                      minHeight: 58px
+                      background: rgba(255,255,255,.05)
+                      borderRadius: 12px
+                - component: oh-label-card
+                  config:
+                    title: Temp
+                    item: =props.temperatureItem
+                    style:
+                      margin: 0
+                      minHeight: 58px
+                      background: rgba(255,255,255,.05)
+                      borderRadius: 12px
+                - component: oh-label-card
+                  config:
+                    title: Humidity
+                    item: =props.humidityItem
+                    style:
+                      margin: 0
+                      minHeight: 58px
+                      background: rgba(255,255,255,.05)
+                      borderRadius: 12px
+                - component: oh-label-card
+                  config:
+                    title: Export
+                    item: =props.gridExportDailyItem
+                    style:
+                      margin: 0
+                      minHeight: 58px
+                      background: rgba(255,255,255,.05)
+                      borderRadius: 12px
+
+          # HA-like home panel shortcuts (uses openHAB standard action analyzer/control pages)
+          - component: f7-block
+            config:
+              visible: "=items[props.showHomePanelItem] && items[props.showHomePanelItem].state === 'ON'"
+              style:
+                position: absolute
+                right: 18px
+                top: 360px
+                margin: 0
+                padding: 8px
+                display: flex
+                gap: 8px
+                background: rgba(0,0,0,.34)
+                borderRadius: 24px
+                border: 1px solid rgba(255,255,255,.18)
+                backdropFilter: blur(7px)
+            slots:
+              default:
+                - component: oh-button
+                  config:
+                    iconF7: camera_fill
+                    action: group
+                    actionGroupPopupItem: gLuminaCameras
+                    style:
+                      borderRadius: 50%
+                - component: oh-button
+                  config:
+                    iconF7: lightbulb_fill
+                    action: group
+                    actionGroupPopupItem: gLuminaLights
+                    style:
+                      borderRadius: 50%
+                - component: oh-button
+                  config:
+                    iconF7: thermometer
+                    action: analyzer
+                    actionAnalyzerItems:
+                      - =props.temperatureItem
+                    style:
+                      borderRadius: 50%
+                - component: oh-button
+                  config:
+                    iconF7: lock_shield_fill
+                    action: group
+                    actionGroupPopupItem: gLuminaSecurity
+                    style:
+                      borderRadius: 50%
+
+          # CSS animation and small responsive fixes
+          - component: style
+            config:
+              stylesheet: |
+                @keyframes luminaDash {
+                  from { stroke-dashoffset: 0; }
+                  to { stroke-dashoffset: -52; }
+                }
+                .lumina-energy-widget .card-header { display: none; }
+                .lumina-energy-widget .oh-label-card, .lumina-energy-widget .oh-gauge-card {
+                  --f7-card-margin-horizontal: 0px;
+                  --f7-card-margin-vertical: 0px;
+                }
+                @media (max-width: 620px) {
+                  .lumina-energy-widget .lumina-stage { min-height: 470px !important; height: 78vw !important; }
+                }
