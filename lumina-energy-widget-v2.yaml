@@ -1329,7 +1329,7 @@ slots:
               visible: "=items[props.gridPowerItem] && items[props.gridPowerItem].state !== 'NULL' && items[props.gridPowerItem].state !== 'UNDEF' && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
               style:
                 position: absolute
-                right: 2%
+                right: 5%
                 top: 11%
                 width: 28%
                 opacity: .94
