@@ -1303,9 +1303,9 @@ slots:
               visible: "=items[props.homeLoadItem] && items[props.homeLoadItem].state !== 'NULL' && items[props.homeLoadItem].state !== 'UNDEF'"
               style:
                 position: absolute
-                left: 33%
-                top: 11%
-                width: 33%
+                left: 30%
+                top: 7%
+                width: 40%
                 opacity: .96
                 filter: drop-shadow(0 0 18px rgba(0,255,255,.42))
                 pointerEvents: none
@@ -1329,9 +1329,9 @@ slots:
               visible: "=items[props.gridPowerItem] && items[props.gridPowerItem].state !== 'NULL' && items[props.gridPowerItem].state !== 'UNDEF' && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
               style:
                 position: absolute
-                right: 7%
-                top: 18%
-                width: 18%
+                right: 4%
+                top: 13%
+                width: 24%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
                 pointerEvents: none
@@ -1342,9 +1342,9 @@ slots:
               visible: "=items[props.inverterPowerItem] && items[props.inverterPowerItem].state !== 'NULL' && items[props.inverterPowerItem].state !== 'UNDEF'"
               style:
                 position: absolute
-                left: 52%
-                top: 52%
-                width: 16%
+                left: 49%
+                top: 48%
+                width: 22%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
                 pointerEvents: none
