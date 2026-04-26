@@ -1303,8 +1303,8 @@ slots:
               visible: "=items[props.homeLoadItem] && items[props.homeLoadItem].state !== 'NULL' && items[props.homeLoadItem].state !== 'UNDEF'"
               style:
                 position: absolute
-                left: 43%
-                top: 24%
+                left: 34%
+                top: 13%
                 width: 30%
                 opacity: .96
                 filter: drop-shadow(0 0 18px rgba(0,255,255,.42))
@@ -1317,7 +1317,7 @@ slots:
               style:
                 position: absolute
                 left: 1.5%
-                top: 44%
+                top: 34%
                 width: 36%
                 opacity: .94
                 filter: drop-shadow(0 0 18px rgba(0,255,255,.42))
@@ -1330,8 +1330,8 @@ slots:
               style:
                 position: absolute
                 right: 8%
-                top: 30%
-                width: 16%
+                top: 22%
+                width: 14.5%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
                 pointerEvents: none
@@ -1342,9 +1342,9 @@ slots:
               visible: "=items[props.inverterPowerItem] && items[props.inverterPowerItem].state !== 'NULL' && items[props.inverterPowerItem].state !== 'UNDEF'"
               style:
                 position: absolute
-                left: 52%
-                top: 60%
-                width: 16%
+                left: 50%
+                top: 54%
+                width: 14%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
                 pointerEvents: none
@@ -1381,9 +1381,9 @@ slots:
               visible: "=items[props.poolPowerItem] && items[props.poolPowerItem].state !== 'NULL' && items[props.poolPowerItem].state !== 'UNDEF' && items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
               style:
                 position: absolute
-                left: 7.5%
-                top: 43%
-                width: 18.5%
+                right: 1.5%
+                top: 70%
+                width: 24%
                 opacity: .90
                 filter: drop-shadow(0 0 16px rgba(68,255,227,.38))
                 pointerEvents: none
