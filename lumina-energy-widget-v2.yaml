@@ -1,0 +1,1458 @@
+uid: lumina_energy_widget_v2
+props:
+  parameters:
+    - name: title
+      label: Title
+      type: TEXT
+      default: Lumina Energy
+    - name: backgroundImage
+      label: Day Background Image URL
+      type: TEXT
+      default: /static/lumina/lumina_background_without_everything.png
+    - name: nightBackgroundImage
+      label: Night Background Image URL
+      type: TEXT
+      default: /static/lumina/lumina_background_without_everything.png
+    - name: nightModeItem
+      label: Night Mode Item
+      type: TEXT
+      default: Lumina_Night_Mode
+    - name: flowThreshold
+      label: Flow Visibility Threshold (W)
+      type: INTEGER
+      default: 30
+    - name: pvPowerItem
+      label: PV Total Power Item
+      type: TEXT
+      default: Lumina_PV_Power
+    - name: pvSecondaryPowerItem
+      label: PV Array 2 Power Item
+      type: TEXT
+      default: Lumina_PV_Array2_Power
+    - name: pvDailyItem
+      label: PV Daily Energy Item
+      type: TEXT
+      default: Lumina_PV_Daily
+    - name: homeLoadItem
+      label: House Load Item
+      type: TEXT
+      default: Lumina_House_Load
+    - name: gridPowerItem
+      label: Grid Power Item (+import / -export)
+      type: TEXT
+      default: Lumina_Grid_Power
+    - name: batteryPowerItem
+      label: Battery Flow Item (+charge / -discharge)
+      type: TEXT
+      default: Lumina_Battery_Power
+    - name: batterySocItem
+      label: Battery SOC Item
+      type: TEXT
+      default: Lumina_Battery_SOC
+    - name: inverterPowerItem
+      label: Inverter Power Item
+      type: TEXT
+      default: Lumina_Inverter_Power
+    - name: evPowerItem
+      label: EV Power Item
+      type: TEXT
+      default: Lumina_EV_Power
+    - name: evSocItem
+      label: EV SOC Item
+      type: TEXT
+      default: Lumina_EV_SOC
+    - name: ev2PowerItem
+      label: EV 2 Power Item
+      type: TEXT
+      default: Lumina_EV2_Power
+    - name: ev2SocItem
+      label: EV 2 SOC Item
+      type: TEXT
+      default: Lumina_EV2_SOC
+    - name: poolPowerItem
+      label: Pool Power Item
+      type: TEXT
+      default: Lumina_Pool_Power
+    - name: heatPumpPowerItem
+      label: Heat Pump Power Item
+      type: TEXT
+      default: Lumina_HeatPump_Power
+    - name: solarForecastItem
+      label: Solar Forecast Item
+      type: TEXT
+      default: Lumina_Solar_Forecast
+    - name: temperatureItem
+      label: House Temperature Item
+      type: TEXT
+      default: Lumina_House_Temperature
+    - name: humidityItem
+      label: House Humidity Item
+      type: TEXT
+      default: Lumina_House_Humidity
+    - name: showPVItem
+      label: Show PV Item
+      type: TEXT
+      default: Lumina_Show_PV
+    - name: showGridItem
+      label: Show Grid Item
+      type: TEXT
+      default: Lumina_Show_Grid
+    - name: showBatteryItem
+      label: Show Battery Item
+      type: TEXT
+      default: Lumina_Show_Battery
+    - name: showEVItem
+      label: Show EV Item
+      type: TEXT
+      default: Lumina_Show_EV
+    - name: showEV2Item
+      label: Show EV 2 Item
+      type: TEXT
+      default: Lumina_Show_EV2
+    - name: showPoolItem
+      label: Show Pool Item
+      type: TEXT
+      default: Lumina_Show_Pool
+    - name: showHeatPumpItem
+      label: Show Heat Pump Item
+      type: TEXT
+      default: Lumina_Show_HeatPump
+    - name: showForecastItem
+      label: Show Solar Forecast Item
+      type: TEXT
+      default: Lumina_Show_Solar_Forecast
+    - name: showHomePanelItem
+      label: Show Home Panel Item
+      type: TEXT
+      default: Lumina_Show_Home_Panel
+    - name: textVisibilityItem
+      label: Text Visibility Item
+      type: TEXT
+      default: Lumina_Text_Visible
+    - name: oldHouseOverlayImage
+      label: Old House Overlay Image URL
+      type: TEXT
+      default: /static/lumina/oldhouse.png
+    - name: solarOverlayImage
+      label: Solar Overlay Image URL
+      type: TEXT
+      default: /static/lumina/solar.png
+    - name: gridConnectorOverlayImage
+      label: Grid Connector Overlay Image URL
+      type: TEXT
+      default: /static/lumina/grid-connector.png
+    - name: inverterOverlayImage
+      label: Inverter Overlay Image URL
+      type: TEXT
+      default: /static/lumina/inverter.png
+    - name: batteryOverlayImage
+      label: Battery Overlay Image URL
+      type: TEXT
+      default: /static/lumina/battery.png
+    - name: carOverlayImage
+      label: Car Overlay Image URL
+      type: TEXT
+      default: /static/lumina/car.png
+    - name: poolOverlayImage
+      label: Pool Overlay Image URL
+      type: TEXT
+      default: /static/lumina/Pool.png
+    - name: turbineOverlayImage
+      label: Turbine Overlay Image URL
+      type: TEXT
+      default: /static/lumina/turbine.png
+  parameterGroups: []
+
+component: f7-card
+config:
+  class:
+    - lumina-energy-widget
+  style:
+    margin: 0
+    borderRadius: 22px
+    overflow: hidden
+    background: "#020916"
+    boxShadow: 0 12px 35px rgba(0,0,0,.45)
+slots:
+  default:
+    - component: f7-block
+      config:
+        class:
+          - lumina-stage
+        style:
+          position: relative
+          aspectRatio: "16 / 9"
+          minHeight: 50px
+          padding: 0
+          margin: 0
+          overflow: hidden
+          color: white
+          backgroundImage: "=(items[props.nightModeItem] && (items[props.nightModeItem].state === 'ON' || items[props.nightModeItem].state === 'OPEN')) ? `url(${props.nightBackgroundImage})` : `url(${props.backgroundImage})`"
+          backgroundSize: cover
+          backgroundPosition: center
+          fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+      slots:
+        default:
+          - component: f7-block
+            config:
+              style:
+                position: absolute
+                inset: 0
+                margin: 0
+                padding: 0
+                background: radial-gradient(circle at 50% 48%, rgba(0,255,255,.08), rgba(0,0,0,.08) 42%, rgba(0,0,0,.22) 100%)
+                pointerEvents: none
+
+          - component: svg
+            config:
+              viewBox: 0 0 800 450
+              preserveAspectRatio: xMidYMid meet
+              style:
+                position: absolute
+                inset: 0
+                width: 100%
+                height: 100%
+                overflow: visible
+                filter: drop-shadow(0 0 6px rgba(0,255,255,.35))
+                zIndex: 2
+            slots:
+              default:
+                - component: defs
+                  slots:
+                    default:
+                      - component: style
+                        config:
+                          stylesheet: |
+                            @keyframes luminaShimmer { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+                            @keyframes luminaGlowPulse { 0%,100% { opacity: .72; } 50% { opacity: 1; } }
+                            .luminaText { display: none; font-family: 'Exo 2', Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: rgba(0,15,25,.45); stroke-width: 2px; text-shadow: 0 0 4px rgba(245,243,238,.6), 0 0 14px currentColor; }
+                            .luminaSmall { font-size: 12px; letter-spacing: 1px; }
+                            .luminaValue { font-size: 12px; }
+                            .luminaFlowBase { fill: none !important; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .18; }
+                            .luminaFlowShimmer { fill: none !important; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 14 86; stroke-dashoffset: 100; filter: drop-shadow(0 0 10px currentColor); animation: luminaShimmer 2.6s linear infinite, luminaGlowPulse .9s ease-in-out infinite; }
+                            .luminaFlowDot { filter: drop-shadow(0 0 10px currentColor); opacity: .96; }
+                            .luminaFlowDotHalo { opacity: .18; filter: drop-shadow(0 0 14px currentColor); }
+                            .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
+                            .luminaFlowShimmer.reverse3 { animation-delay: -.56s, 0s; }
+                            .luminaFlowShimmer.reverse4 { animation-delay: -.84s, 0s; }
+                            .luminaFlowShimmer.reverse5 { animation-delay: -1.12s, 0s; }
+                            .luminaFlowShimmer.reverse6 { animation-delay: -1.4s, 0s; }
+                            .luminaFlowShimmer.reverse7 { animation-delay: -1.68s, 0s; }
+                            .luminaFlowShimmer.reverse8 { animation-delay: -1.96s, 0s; }
+                            .luminaFlowShimmer.reverse9 { animation-delay: -2.24s, 0s; }
+                # Home Assistant-style animated flow layer:
+                # base line + moving shimmer + visible particles travelling along each original FLOW_PATHS path.
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "M 193 201 L 415 270"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "#0080ff"
+                      - component: path
+                        config:
+                          d: "M 193 201 L 415 270"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "#0080ff"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "#0080ff"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 193 201 L 415 270"
+                                dur: 2.6s
+                                begin: 0s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "#0080ff"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 193 201 L 415 270"
+                                dur: 2.6s
+                                begin: 0s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.pvSecondaryPowerItem] && items[props.pvSecondaryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "M 270 232 L 410 275"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "#80ffff"
+                      - component: path
+                        config:
+                          d: "M 270 232 L 410 275"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "#80ffff"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "#80ffff"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 270 232 L 410 275"
+                                dur: 2.6s
+                                begin: -.35s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "#80ffff"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 270 232 L 410 275"
+                                dur: 2.6s
+                                begin: -.35s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? 'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
+                      - component: path
+                        config:
+                          d: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? 'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? 'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                                dur: 2.6s
+                                begin: -.7s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? 'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                                dur: 2.6s
+                                begin: -.7s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0)) >= Number(props.flowThreshold || 30)"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "M 480 263 L 566 235 L 475 210"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "#00f1f2"
+                      - component: path
+                        config:
+                          d: "M 480 263 L 566 235 L 475 210"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "#00f1f2"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "#00f1f2"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 480 263 L 566 235 L 475 210"
+                                dur: 2.6s
+                                begin: -1.05s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "#00f1f2"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 480 263 L 566 235 L 475 210"
+                                dur: 2.6s
+                                begin: -1.05s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233 L 616 200'"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                      - component: path
+                        config:
+                          d: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233 L 616 200'"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233 L 616 200'"
+                                dur: 2.6s
+                                begin: -1.4s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233 L 616 200'"
+                                dur: 2.6s
+                                begin: -1.4s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                      - component: path
+                        config:
+                          d: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                                dur: 2.6s
+                                begin: -1.75s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                                dur: 2.6s
+                                begin: -1.75s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && (items[props.showEVItem] && items[props.showEVItem].state === 'ON')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "M 504 300 L 520 305 L 620 270"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "#00f9f9"
+                      - component: path
+                        config:
+                          d: "M 504 300 L 520 305 L 620 270"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "#00f9f9"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "#00f9f9"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 504 300 L 520 305 L 620 270"
+                                dur: 2.6s
+                                begin: -2.1s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "#00f9f9"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 504 300 L 520 305 L 620 270"
+                                dur: 2.6s
+                                begin: -2.1s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && (items[props.showEV2Item] && items[props.showEV2Item].state === 'ON')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "M 495 306 L 630 350 L 720 310"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "#00f9f9"
+                      - component: path
+                        config:
+                          d: "M 495 306 L 630 350 L 720 310"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "#00f9f9"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "#00f9f9"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 495 306 L 630 350 L 720 310"
+                                dur: 2.6s
+                                begin: -2.45s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "#00f9f9"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 495 306 L 630 350 L 720 310"
+                                dur: 2.6s
+                                begin: -2.45s
+                                repeatCount: indefinite
+                                rotate: auto
+                - component: g
+                  config:
+                    class: luminaFlowGroup
+                    visible: "=Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && (items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON')"
+                  slots:
+                    default:
+                      - component: path
+                        config:
+                          d: "M 363 237 L 410 226"
+                          class: luminaFlowBase
+                          fill: none
+                          stroke: "#F5F3EE"
+                      - component: path
+                        config:
+                          d: "M 363 237 L 410 226"
+                          class: luminaFlowShimmer
+                          fill: none
+                          stroke: "#F5F3EE"
+                          pathLength: 100
+                        slots:
+                          default:
+                            - component: animate
+                              config:
+                                attributeName: stroke-dashoffset
+                                from: 100
+                                to: 0
+                                dur: 2.6s
+                                repeatCount: indefinite
+                      - component: circle
+                        config:
+                          r: 7
+                          class: luminaFlowDotHalo
+                          fill: "#F5F3EE"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 363 237 L 410 226"
+                                dur: 2.6s
+                                begin: -2.8s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: circle
+                        config:
+                          r: 3.2
+                          class: luminaFlowDot
+                          fill: "#F5F3EE"
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "M 363 237 L 410 226"
+                                dur: 2.6s
+                                begin: -2.8s
+                                repeatCount: indefinite
+                                rotate: auto
+
+                # Values use the same 800x450 coordinate philosophy as HA dev_text_* defaults.
+                # Core text positions/transforms mirror dist/lumina-energy-card.js DEFAULT_TEXT_POSITIONS.
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 100
+                    y: 142
+                    transform: translate(100, 156) rotate(-9.3) skewX(-13) skewY(1) translate(-100, -156)
+                    fill: "#00FFFF"
+                    text: "=items[props.pvPowerItem] ? items[props.pvPowerItem].displayState || items[props.pvPowerItem].state : ''"
+                    visible: "=!(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 100
+                    y: 156
+                    transform: translate(100, 156) rotate(-9.3) skewX(-13) skewY(1) translate(-100, -156)
+                    fill: "#7CFF4D"
+                    text: "=items[props.pvDailyItem] ? items[props.pvDailyItem].displayState || items[props.pvDailyItem].state : ''"
+                    visible: "=items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 100
+                    y: 170
+                    transform: translate(100, 156) rotate(-9.3) skewX(-13) skewY(1) translate(-100, -156)
+                    fill: "#0088FF"
+                    text: "=items[props.pvSecondaryPowerItem] ? items[props.pvSecondaryPowerItem].displayState || items[props.pvSecondaryPowerItem].state : ''"
+                    visible: "=items[props.pvSecondaryPowerItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+
+                - component: g
+                  config:
+                    transform: translate(203, 332) rotate(-25) scale(1, 1.05) skewX(-30) skewY(5)
+                    visible: "=!(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                  slots:
+                    default:
+                      - component: text
+                        config:
+                          class: luminaText luminaValue
+                          x: 0
+                          y: 0
+                          fill: "#00FFFF"
+                          text: "=items[props.batterySocItem] ? items[props.batterySocItem].displayState || items[props.batterySocItem].state : ''"
+                      - component: text
+                        config:
+                          class: luminaText luminaValue
+                          x: 0
+                          y: 20
+                          fill: "#00FFFF"
+                          text: "=items[props.batteryPowerItem] ? items[props.batteryPowerItem].displayState || items[props.batteryPowerItem].state : ''"
+
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 428
+                    y: 100
+                    transform: translate(428, 100) rotate(-9) skewX(-20) skewY(3) translate(-428, -100)
+                    fill: "#00F1F2"
+                    text: "=items[props.homeLoadItem] ? items[props.homeLoadItem].displayState || items[props.homeLoadItem].state : ''"
+                    visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 328
+                    y: 66
+                    transform: translate(328, 66) rotate(10) skewX(-20) skewY(3) translate(-328, -66)
+                    fill: "#F5F3EE"
+                    text: "=items[props.temperatureItem] ? items[props.temperatureItem].displayState || items[props.temperatureItem].state : ''"
+                    visible: "=items[props.temperatureItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 630
+                    y: 112
+                    transform: translate(630, 112) rotate(-5.5) skewX(-16) skewY(-5) translate(-630, -112)
+                    fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FFB347' : '#4DA3FF'"
+                    text: "=items[props.gridPowerItem] ? items[props.gridPowerItem].displayState || items[props.gridPowerItem].state : ''"
+                    visible: "=!(items[props.showGridItem] && items[props.showGridItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 400
+                    y: 238
+                    fill: "#00FFFF"
+                    text: "=items[props.inverterPowerItem] ? items[props.inverterPowerItem].displayState || items[props.inverterPowerItem].state : ''"
+                    visible: "=items[props.inverterPowerItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 282
+                    y: 208
+                    transform: translate(282, 208) rotate(-36) skewX(-30) skewY(37) translate(-282, -208)
+                    fill: "#F5F3EE"
+                    text: "=items[props.heatPumpPowerItem] ? items[props.heatPumpPowerItem].displayState || items[props.heatPumpPowerItem].state : ''"
+                    visible: "=items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 690
+                    y: 381
+                    transform: rotate(-6 690 381)
+                    fill: "#44FFE3"
+                    text: "=items[props.poolPowerItem] ? items[props.poolPowerItem].displayState || items[props.poolPowerItem].state : ''"
+                    visible: "=items[props.showPoolItem] && items[props.showPoolItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaSmall
+                    x: 430
+                    y: 72
+                    fill: "#00FFFF"
+                    text: "=items[props.solarForecastItem] ? items[props.solarForecastItem].displayState || items[props.solarForecastItem].state : ''"
+                    visible: "=items[props.showForecastItem] && items[props.showForecastItem].state === 'ON' && items[props.solarForecastItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 603
+                    y: 264
+                    transform: translate(603, 264) rotate(16) skewX(20) skewY(0) translate(-603, -264)
+                    fill: "#F5F3EE"
+                    text: EV
+                    visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 597
+                    y: 279
+                    transform: translate(597, 279) rotate(16) skewX(20) skewY(0) translate(-597, -279)
+                    fill: "#F5F3EE"
+                    text: "=items[props.evPowerItem] ? items[props.evPowerItem].displayState || items[props.evPowerItem].state : ''"
+                    visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 595
+                    y: 295
+                    transform: translate(595, 295) rotate(16) skewX(20) skewY(0) translate(-595, -295)
+                    fill: "#F5F3EE"
+                    text: "=items[props.evSocItem] ? items[props.evSocItem].displayState || items[props.evSocItem].state : ''"
+                    visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && items[props.evSocItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 720
+                    y: 295
+                    transform: translate(720, 295) rotate(14) skewX(20) skewY(0) translate(-720, -295)
+                    fill: "#F5F3EE"
+                    text: EV2
+                    visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 720
+                    y: 313
+                    transform: translate(720, 313) rotate(14) skewX(20) skewY(0) translate(-720, -313)
+                    fill: "#F5F3EE"
+                    text: "=items[props.ev2PowerItem] ? items[props.ev2PowerItem].displayState || items[props.ev2PowerItem].state : ''"
+                    visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 718
+                    y: 330
+                    transform: translate(718, 330) rotate(16) skewX(20) skewY(0) translate(-718, -330)
+                    fill: "#F5F3EE"
+                    text: "=items[props.ev2SocItem] ? items[props.ev2SocItem].displayState || items[props.ev2SocItem].state : ''"
+                    visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && items[props.ev2SocItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+
+
+          # Visible HTML text/value layer. MainUI does not reliably render raw SVG text content,
+          # so these Labels use the exact HA 800x450 coordinates and equivalent CSS transforms.
+          - component: Label
+            config:
+              text: "=items[props.pvPowerItem] ? items[props.pvPowerItem].displayState || items[props.pvPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 12.5000%
+                top: 31.5556%
+                transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
+                transformOrigin: center center
+                color: "#00FFFF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.pvDailyItem] ? items[props.pvDailyItem].displayState || items[props.pvDailyItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 12.5000%
+                top: 34.6667%
+                transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
+                transformOrigin: center center
+                color: "#7CFF4D"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.pvSecondaryPowerItem] ? items[props.pvSecondaryPowerItem].displayState || items[props.pvSecondaryPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.pvSecondaryPowerItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 12.5000%
+                top: 37.7778%
+                transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
+                transformOrigin: center center
+                color: "#0088FF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.batterySocItem] ? items[props.batterySocItem].displayState || items[props.batterySocItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 25.3750%
+                top: 73.7778%
+                transform: translate(-50%, -50%) rotate(-25deg) scale(1, 1.05) skew(-30deg, 5deg)
+                transformOrigin: center center
+                color: "#00FFFF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.batteryPowerItem] ? items[props.batteryPowerItem].displayState || items[props.batteryPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 25.3750%
+                top: 78.2222%
+                transform: translate(-50%, -50%) rotate(-25deg) scale(1, 1.05) skew(-30deg, 5deg)
+                transformOrigin: center center
+                color: "#00FFFF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.homeLoadItem] ? items[props.homeLoadItem].displayState || items[props.homeLoadItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 53.5000%
+                top: 22.2222%
+                transform: translate(-50%, -50%) rotate(-9deg) scale(1, 1) skew(-20deg, 3deg)
+                transformOrigin: center center
+                color: "#00F1F2"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.temperatureItem] ? items[props.temperatureItem].displayState || items[props.temperatureItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.temperatureItem]"
+              style:
+                position: absolute
+                left: 41.0000%
+                top: 14.6667%
+                transform: translate(-50%, -50%) rotate(10deg) scale(1, 1) skew(-20deg, 3deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.gridPowerItem] ? items[props.gridPowerItem].displayState || items[props.gridPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 78.7500%
+                top: 24.8889%
+                transform: translate(-50%, -50%) rotate(-5.5deg) scale(1, 1) skew(-16deg, -5deg)
+                transformOrigin: center center
+                color: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FFB347' : '#4DA3FF'"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.inverterPowerItem] ? items[props.inverterPowerItem].displayState || items[props.inverterPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.inverterPowerItem]"
+              style:
+                position: absolute
+                left: 50.0000%
+                top: 52.8889%
+                transform: translate(-50%, -50%) rotate(0deg) scale(1, 1) skew(0deg, 0deg)
+                transformOrigin: center center
+                color: "#00FFFF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.heatPumpPowerItem] ? items[props.heatPumpPowerItem].displayState || items[props.heatPumpPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 35.2500%
+                top: 46.2222%
+                transform: translate(-50%, -50%) rotate(-36deg) scale(1, 1) skew(-30deg, 37deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.poolPowerItem] ? items[props.poolPowerItem].displayState || items[props.poolPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 86.2500%
+                top: 84.6667%
+                transform: translate(-50%, -50%) rotate(-6deg) scale(1, 1) skew(0deg, 0deg)
+                transformOrigin: center center
+                color: "#44FFE3"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.solarForecastItem] ? items[props.solarForecastItem].displayState || items[props.solarForecastItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showForecastItem] && items[props.showForecastItem].state === 'ON' && items[props.solarForecastItem]"
+              style:
+                position: absolute
+                left: 53.7500%
+                top: 16.0000%
+                transform: translate(-50%, -50%) rotate(0deg) scale(1, 1) skew(0deg, 0deg)
+                transformOrigin: center center
+                color: "#00FFFF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 11px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: EV
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEVItem] && items[props.showEVItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 75.3750%
+                top: 58.6667%
+                transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.evPowerItem] ? items[props.evPowerItem].displayState || items[props.evPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEVItem] && items[props.showEVItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 74.6250%
+                top: 62.0000%
+                transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.evSocItem] ? items[props.evSocItem].displayState || items[props.evSocItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEVItem] && items[props.showEVItem].state === 'ON' && items[props.evSocItem]"
+              style:
+                position: absolute
+                left: 74.3750%
+                top: 65.5556%
+                transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: EV2
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEV2Item] && items[props.showEV2Item].state === 'ON'"
+              style:
+                position: absolute
+                left: 90.0000%
+                top: 65.5556%
+                transform: translate(-50%, -50%) rotate(14deg) scale(1, 1) skew(20deg, 0deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.ev2PowerItem] ? items[props.ev2PowerItem].displayState || items[props.ev2PowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEV2Item] && items[props.showEV2Item].state === 'ON'"
+              style:
+                position: absolute
+                left: 90.0000%
+                top: 69.5556%
+                transform: translate(-50%, -50%) rotate(14deg) scale(1, 1) skew(20deg, 0deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.ev2SocItem] ? items[props.ev2SocItem].displayState || items[props.ev2SocItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && items[props.ev2SocItem]"
+              style:
+                position: absolute
+                left: 89.7500%
+                top: 73.3333%
+                transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
+                transformOrigin: center center
+                color: "#F5F3EE"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+
+          - component: img
+            config:
+              src: =props.oldHouseOverlayImage
+              visible: "=items[props.homeLoadItem] && items[props.homeLoadItem].state !== 'NULL' && items[props.homeLoadItem].state !== 'UNDEF'"
+              style:
+                position: absolute
+                left: 43%
+                top: 24%
+                width: 30%
+                opacity: .96
+                filter: drop-shadow(0 0 18px rgba(0,255,255,.42))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.solarOverlayImage
+              visible: "=items[props.pvPowerItem] && items[props.pvPowerItem].state !== 'NULL' && items[props.pvPowerItem].state !== 'UNDEF' && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 1.5%
+                top: 44%
+                width: 36%
+                opacity: .94
+                filter: drop-shadow(0 0 18px rgba(0,255,255,.42))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.gridConnectorOverlayImage
+              visible: "=items[props.gridPowerItem] && items[props.gridPowerItem].state !== 'NULL' && items[props.gridPowerItem].state !== 'UNDEF' && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+              style:
+                position: absolute
+                right: 8%
+                top: 30%
+                width: 16%
+                opacity: .94
+                filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.inverterOverlayImage
+              visible: "=items[props.inverterPowerItem] && items[props.inverterPowerItem].state !== 'NULL' && items[props.inverterPowerItem].state !== 'UNDEF'"
+              style:
+                position: absolute
+                left: 52%
+                top: 60%
+                width: 16%
+                opacity: .94
+                filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.batteryOverlayImage
+              visible: "=items[props.batteryPowerItem] && items[props.batteryPowerItem].state !== 'NULL' && items[props.batteryPowerItem].state !== 'UNDEF' && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 28.3%
+                top: 51.5%
+                width: 17.5%
+                opacity: .95
+                filter: drop-shadow(0 0 18px rgba(0,255,255,.45))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.carOverlayImage
+              visible: "=items[props.evPowerItem] && items[props.evPowerItem].state !== 'NULL' && items[props.evPowerItem].state !== 'UNDEF' && items[props.showEVItem] && items[props.showEVItem].state === 'ON'"
+              style:
+                position: absolute
+                right: 4%
+                top: 56%
+                width: 20%
+                opacity: .94
+                filter: drop-shadow(0 0 16px rgba(255,77,240,.38))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.poolOverlayImage
+              visible: "=items[props.poolPowerItem] && items[props.poolPowerItem].state !== 'NULL' && items[props.poolPowerItem].state !== 'UNDEF' && items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 7.5%
+                top: 43%
+                width: 18.5%
+                opacity: .90
+                filter: drop-shadow(0 0 16px rgba(68,255,227,.38))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
+              src: =props.turbineOverlayImage
+              visible: "=items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state !== 'NULL' && items[props.heatPumpPowerItem].state !== 'UNDEF' && items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON'"
+              style:
+                position: absolute
+                left: 48%
+                top: 14%
+                width: 9%
+                opacity: .78
+                filter: drop-shadow(0 0 16px rgba(0,255,255,.50))
+                pointerEvents: none
+                zIndex: 1
+
+          # Invisible click hit zones: keep HA-like popups/analyzer without visual cards.
+          - component: oh-link
+            config:
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.pvPowerItem
+                - =props.pvDailyItem
+              style:
+                position: absolute
+                left: 4%
+                top: 18%
+                width: 24%
+                height: 30%
+          - component: oh-link
+            config:
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.batteryPowerItem
+                - =props.batterySocItem
+              style:
+                position: absolute
+                left: 23%
+                top: 55%
+                width: 28%
+                height: 33%
+          - component: oh-link
+            config:
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.gridPowerItem
+              style:
+                position: absolute
+                right: 8%
+                top: 14%
+                width: 22%
+                height: 28%
+          - component: oh-link
+            config:
+              action: analyzer
+              actionAnalyzerItems:
+                - =props.homeLoadItem
+                - =props.temperatureItem
+                - =props.humidityItem
+              style:
+                position: absolute
+                left: 43%
+                top: 14%
+                width: 25%
+                height: 26%
+          - component: style
+            config:
+              stylesheet: |
+                .lumina-energy-widget .card-header { display:none; }
+                .lumina-energy-widget a { cursor:pointer; }
