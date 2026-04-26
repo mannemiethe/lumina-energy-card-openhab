@@ -1330,7 +1330,7 @@ slots:
               style:
                 position: absolute
                 right: 2%
-                top: 15%
+                top: 11%
                 width: 28%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
