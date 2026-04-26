@@ -160,7 +160,7 @@ props:
     - name: heatPumpOverlayImage
       label: Heat Pump Overlay Image URL
       type: TEXT
-      default: /static/lumina/heat-pump2.png
+      default: /static/lumina/heatpump.png
     - name: turbineOverlayImage
       label: Turbine Overlay Image URL
       type: TEXT
