@@ -1,0 +1,117 @@
+// Lumina Energy - OpenHAB Item Template (Home Assistant parity)
+// Goal: mirror the Home Assistant Lumina Energy Card data model as far as MainUI widgets allow.
+// Place this in $OPENHAB_CONF/items/lumina-energy.items or create equivalent managed Items.
+// Static assets for widget images belong in $OPENHAB_CONF/html/lumina/ and are served as /static/lumina/...
+
+Group gLuminaEnergy       "Lumina Energy"
+Group gLuminaVisibility   "Lumina Visibility"
+Group gLuminaPvStrings    "Lumina PV Strings"
+Group gLuminaBatteries    "Lumina Batteries"
+Group gLuminaCameras      "Lumina Cameras"
+Group gLuminaLights       "Lumina Lights"
+Group gLuminaSecurity     "Lumina Security"
+
+// -----------------------------
+// Core power values (W)
+// -----------------------------
+Number:Power Lumina_PV_Power              "PV [%.0f W]"                    <sun>              (gLuminaEnergy)
+Number:Power Lumina_PV_Array2_Power       "PV Array 2 [%.0f W]"            <solarplant>       (gLuminaEnergy)
+Number:Power Lumina_House_Load            "House [%.0f W]"                 <house>            (gLuminaEnergy)
+Number:Power Lumina_Grid_Power            "Grid [%.0f W]"                  <poweroutlet_eu>   (gLuminaEnergy)
+Number:Power Lumina_Battery_Power         "Battery [%.0f W]"               <batterylevel>     (gLuminaEnergy)
+Number:Power Lumina_Inverter_Power        "Inverter [%.0f W]"              <energy>           (gLuminaEnergy)
+
+// Sign conventions used by widget:
+// Grid   : + import, - export
+// Battery: + charge, - discharge
+
+// -----------------------------
+// PV strings (up to 9 + second array)
+// -----------------------------
+Number:Power Lumina_PV_String_1           "PV String 1 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_2           "PV String 2 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_3           "PV String 3 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_4           "PV String 4 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_5           "PV String 5 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_6           "PV String 6 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_7           "PV String 7 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_8           "PV String 8 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_String_9           "PV String 9 [%.0f W]"           <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_Array2_String_1    "PV Array 2 String 1 [%.0f W]"   <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_Array2_String_2    "PV Array 2 String 2 [%.0f W]"   <sun>              (gLuminaPvStrings)
+Number:Power Lumina_PV_Array2_String_3    "PV Array 2 String 3 [%.0f W]"   <sun>              (gLuminaPvStrings)
+
+// -----------------------------
+// Battery SOC and per-battery power (up to 4)
+// -----------------------------
+Number:Dimensionless Lumina_Battery_SOC   "Battery SOC [%.0f %%]"          <batterylevel>     (gLuminaEnergy)
+Number:Dimensionless Lumina_Battery_1_SOC "Battery 1 SOC [%.0f %%]"        <batterylevel>     (gLuminaBatteries)
+Number:Power Lumina_Battery_1_Power       "Battery 1 [%.0f W]"             <batterylevel>     (gLuminaBatteries)
+Number:Dimensionless Lumina_Battery_2_SOC "Battery 2 SOC [%.0f %%]"        <batterylevel>     (gLuminaBatteries)
+Number:Power Lumina_Battery_2_Power       "Battery 2 [%.0f W]"             <batterylevel>     (gLuminaBatteries)
+Number:Dimensionless Lumina_Battery_3_SOC "Battery 3 SOC [%.0f %%]"        <batterylevel>     (gLuminaBatteries)
+Number:Power Lumina_Battery_3_Power       "Battery 3 [%.0f W]"             <batterylevel>     (gLuminaBatteries)
+Number:Dimensionless Lumina_Battery_4_SOC "Battery 4 SOC [%.0f %%]"        <batterylevel>     (gLuminaBatteries)
+Number:Power Lumina_Battery_4_Power       "Battery 4 [%.0f W]"             <batterylevel>     (gLuminaBatteries)
+
+// -----------------------------
+// Daily energies (kWh)
+// -----------------------------
+Number:Energy Lumina_PV_Daily             "PV Today [%.2f kWh]"            <solarplant>       (gLuminaEnergy)
+Number:Energy Lumina_PV_Array2_Daily      "PV Array 2 Today [%.2f kWh]"    <solarplant>       (gLuminaEnergy)
+Number:Energy Lumina_House_Daily          "House Today [%.2f kWh]"         <house>            (gLuminaEnergy)
+Number:Energy Lumina_Grid_Daily_Import    "Grid Import Today [%.2f kWh]"   <energy>           (gLuminaEnergy)
+Number:Energy Lumina_Grid_Daily_Export    "Grid Export Today [%.2f kWh]"   <energy>           (gLuminaEnergy)
+Number:Energy Lumina_Battery_Charge_Daily "Battery Charge Today [%.2f kWh]" <batterylevel>    (gLuminaEnergy)
+Number:Energy Lumina_Battery_Discharge_Daily "Battery Discharge Today [%.2f kWh]" <batterylevel> (gLuminaEnergy)
+
+// -----------------------------
+// Optional consumers/sources (W / SOC / forecast)
+// -----------------------------
+Number:Power Lumina_EV_Power              "EV [%.0f W]"                    <car>              (gLuminaEnergy)
+Number:Dimensionless Lumina_EV_SOC        "EV SOC [%.0f %%]"               <batterylevel>     (gLuminaEnergy)
+Number:Power Lumina_EV2_Power             "EV 2 [%.0f W]"                  <car>              (gLuminaEnergy)
+Number:Dimensionless Lumina_EV2_SOC       "EV 2 SOC [%.0f %%]"             <batterylevel>     (gLuminaEnergy)
+Number:Power Lumina_Pool_Power            "Pool [%.0f W]"                  <water>            (gLuminaEnergy)
+Number:Power Lumina_HeatPump_Power        "Heat Pump [%.0f W]"             <radiator>         (gLuminaEnergy)
+Number:Power Lumina_Solar_Forecast        "Solar Forecast [%.0f W]"        <sun_clouds>       (gLuminaEnergy)
+Number:Temperature Lumina_House_Temperature "House Temperature [%.1f °C]"  <temperature>      (gLuminaEnergy)
+Number:Dimensionless Lumina_House_Humidity "House Humidity [%.0f %%]"      <humidity>         (gLuminaEnergy)
+
+// -----------------------------
+// Visibility and view-state toggles (ON=show / OFF=hide)
+// -----------------------------
+Switch Lumina_Show_PV                     "Show PV"                        <sun>              (gLuminaVisibility)
+Switch Lumina_Show_Grid                   "Show Grid"                      <energy>           (gLuminaVisibility)
+Switch Lumina_Show_Battery                "Show Battery"                   <batterylevel>     (gLuminaVisibility)
+Switch Lumina_Show_EV                     "Show EV"                        <car>              (gLuminaVisibility)
+Switch Lumina_Show_EV2                    "Show EV 2"                      <car>              (gLuminaVisibility)
+Switch Lumina_Show_Pool                   "Show Pool"                      <water>            (gLuminaVisibility)
+Switch Lumina_Show_HeatPump               "Show Heat Pump"                 <radiator>         (gLuminaVisibility)
+Switch Lumina_Show_Solar_Forecast         "Show Solar Forecast"            <sun_clouds>       (gLuminaVisibility)
+Switch Lumina_Show_Clock                  "Show Clock"                     <time>             (gLuminaVisibility)
+Switch Lumina_Show_Home_Panel             "Show Home Panel"                <house>            (gLuminaVisibility)
+Switch Lumina_Text_Visible                "Text Visible"                   <text>             (gLuminaVisibility)
+Switch Lumina_Night_Mode                  "Night Mode"                     <moon>             (gLuminaVisibility)
+String Lumina_Image_Style                 "Image Style [%s]"               <image>            (gLuminaVisibility)
+
+// -----------------------------
+// Optional controls / popup groups
+// -----------------------------
+Switch Lumina_EV_Charging_Enable          "EV Charging"                    <car>
+Switch Lumina_HeatPump_Enable             "Heat Pump"                      <heating>
+
+// Recommended defaults after creation:
+//   Lumina_Show_PV              = ON
+//   Lumina_Show_Grid            = ON
+//   Lumina_Show_Battery         = ON
+//   Lumina_Show_EV              = OFF (if no EV)
+//   Lumina_Show_EV2             = OFF (if no second EV)
+//   Lumina_Show_Pool            = OFF (if no pool)
+//   Lumina_Show_HeatPump        = OFF (if no heat pump)
+//   Lumina_Show_Solar_Forecast  = OFF (if no forecast)
+//   Lumina_Show_Clock           = OFF
+//   Lumina_Show_Home_Panel      = ON
+//   Lumina_Text_Visible         = ON
+//   Lumina_Night_Mode           = OFF
+//   Lumina_Image_Style          = holographic
