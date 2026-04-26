@@ -1398,7 +1398,7 @@ slots:
               visible: "=items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state !== 'NULL' && items[props.heatPumpPowerItem].state !== 'UNDEF' && items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON'"
               style:
                 position: absolute
-                left: 36%
+                left: 38%
                 top: 43%
                 width: 8%
                 opacity: .88
