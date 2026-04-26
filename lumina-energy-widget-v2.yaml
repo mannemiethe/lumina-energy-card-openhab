@@ -1329,9 +1329,9 @@ slots:
               visible: "=items[props.gridPowerItem] && items[props.gridPowerItem].state !== 'NULL' && items[props.gridPowerItem].state !== 'UNDEF' && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
               style:
                 position: absolute
-                right: 0%
-                top: 7%
-                width: 34%
+                right: 3%
+                top: 10%
+                width: 28%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
                 pointerEvents: none
@@ -1342,9 +1342,9 @@ slots:
               visible: "=items[props.inverterPowerItem] && items[props.inverterPowerItem].state !== 'NULL' && items[props.inverterPowerItem].state !== 'UNDEF'"
               style:
                 position: absolute
-                left: 46%
-                top: 43%
-                width: 30%
+                left: 48%
+                top: 46%
+                width: 24%
                 opacity: .94
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.42))
                 pointerEvents: none
@@ -1381,8 +1381,8 @@ slots:
               visible: "=items[props.poolPowerItem] && items[props.poolPowerItem].state !== 'NULL' && items[props.poolPowerItem].state !== 'UNDEF' && items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
               style:
                 position: absolute
-                left: 54%
-                top: 69%
+                left: 43%
+                top: 75%
                 width: 28%
                 opacity: .90
                 filter: drop-shadow(0 0 16px rgba(68,255,227,.38))
