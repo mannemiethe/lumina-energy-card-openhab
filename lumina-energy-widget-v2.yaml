@@ -1399,7 +1399,7 @@ slots:
               style:
                 position: absolute
                 left: 39%
-                top: 43%
+                top: 39%
                 width: 10%
                 opacity: .88
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.50))
