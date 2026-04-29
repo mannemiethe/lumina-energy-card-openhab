@@ -953,6 +953,27 @@ slots:
           # so these Labels use the exact HA 800x450 coordinates and equivalent CSS transforms.
           - component: Label
             config:
+              text: "=items[props.windPowerItem] ? items[props.windPowerItem].displayState || items[props.windPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.windPowerItem]"
+              style:
+                position: absolute
+                left: 12.5000%
+                top: 25.0000%
+                transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
+                transformOrigin: center center
+                color: "#D7F8FF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: "clamp(9.5px, 1.55vw, 20px)"
+                fontWeight: 800
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
               text: "=items[props.pvPowerItem] ? items[props.pvPowerItem].displayState || items[props.pvPowerItem].state : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
               style:
@@ -963,7 +984,7 @@ slots:
                 transformOrigin: center center
                 color: "#00FFFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(8.5px, 1.35vw, 18px)"
+                fontSize: "clamp(9.5px, 1.55vw, 20px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -984,7 +1005,7 @@ slots:
                 transformOrigin: center center
                 color: "#7CFF4D"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(8.5px, 1.35vw, 18px)"
+                fontSize: "clamp(9.5px, 1.55vw, 20px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -1005,7 +1026,7 @@ slots:
                 transformOrigin: center center
                 color: "#0088FF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(8.5px, 1.35vw, 18px)"
+                fontSize: "clamp(9.5px, 1.55vw, 20px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -1026,7 +1047,7 @@ slots:
                 transformOrigin: center center
                 color: "#A9FF7C"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(8.5px, 1.35vw, 18px)"
+                fontSize: "clamp(9.5px, 1.55vw, 20px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
