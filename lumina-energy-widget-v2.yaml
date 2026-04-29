@@ -817,7 +817,7 @@ slots:
                           x: 0
                           y: 0
                           fill: "#00FFFF"
-                          text: "=items[props.batterySocItem] ? items[props.batterySocItem].displayState || items[props.batterySocItem].state : ''"
+                          text: "=items[props.batterySocItem] ? ((items[props.batterySocItem].displayState && !String(items[props.batterySocItem].displayState).includes('ONE')) ? items[props.batterySocItem].displayState : (Math.round((Number.parseFloat(items[props.batterySocItem].state) <= 1 ? Number.parseFloat(items[props.batterySocItem].state) * 100 : Number.parseFloat(items[props.batterySocItem].state))) + ' %')) : ''"
                       - component: text
                         config:
                           class: luminaText luminaValue
@@ -913,7 +913,7 @@ slots:
                     y: 295
                     transform: translate(595, 295) rotate(16) skewX(20) skewY(0) translate(-595, -295)
                     fill: "#F5F3EE"
-                    text: "=items[props.evSocItem] ? items[props.evSocItem].displayState || items[props.evSocItem].state : ''"
+                    text: "=items[props.evSocItem] ? ((items[props.evSocItem].displayState && !String(items[props.evSocItem].displayState).includes('ONE')) ? items[props.evSocItem].displayState : (Math.round((Number.parseFloat(items[props.evSocItem].state) <= 1 ? Number.parseFloat(items[props.evSocItem].state) * 100 : Number.parseFloat(items[props.evSocItem].state))) + ' %')) : ''"
                     visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && items[props.evSocItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
                   config:
@@ -940,7 +940,7 @@ slots:
                     y: 330
                     transform: translate(718, 330) rotate(16) skewX(20) skewY(0) translate(-718, -330)
                     fill: "#F5F3EE"
-                    text: "=items[props.ev2SocItem] ? items[props.ev2SocItem].displayState || items[props.ev2SocItem].state : ''"
+                    text: "=items[props.ev2SocItem] ? ((items[props.ev2SocItem].displayState && !String(items[props.ev2SocItem].displayState).includes('ONE')) ? items[props.ev2SocItem].displayState : (Math.round((Number.parseFloat(items[props.ev2SocItem].state) <= 1 ? Number.parseFloat(items[props.ev2SocItem].state) * 100 : Number.parseFloat(items[props.ev2SocItem].state))) + ' %')) : ''"
                     visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && items[props.ev2SocItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
 
 
@@ -1011,7 +1011,7 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.batterySocItem] ? items[props.batterySocItem].displayState || items[props.batterySocItem].state : ''"
+              text: "=items[props.batterySocItem] ? ((items[props.batterySocItem].displayState && !String(items[props.batterySocItem].displayState).includes('ONE')) ? items[props.batterySocItem].displayState : (Math.round((Number.parseFloat(items[props.batterySocItem].state) <= 1 ? Number.parseFloat(items[props.batterySocItem].state) * 100 : Number.parseFloat(items[props.batterySocItem].state))) + ' %')) : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
               style:
                 position: absolute
@@ -1242,7 +1242,7 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.evSocItem] ? items[props.evSocItem].displayState || items[props.evSocItem].state : ''"
+              text: "=items[props.evSocItem] ? ((items[props.evSocItem].displayState && !String(items[props.evSocItem].displayState).includes('ONE')) ? items[props.evSocItem].displayState : (Math.round((Number.parseFloat(items[props.evSocItem].state) <= 1 ? Number.parseFloat(items[props.evSocItem].state) * 100 : Number.parseFloat(items[props.evSocItem].state))) + ' %')) : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEVItem] && items[props.showEVItem].state === 'ON' && items[props.evSocItem]"
               style:
                 position: absolute
@@ -1305,7 +1305,7 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.ev2SocItem] ? items[props.ev2SocItem].displayState || items[props.ev2SocItem].state : ''"
+              text: "=items[props.ev2SocItem] ? ((items[props.ev2SocItem].displayState && !String(items[props.ev2SocItem].displayState).includes('ONE')) ? items[props.ev2SocItem].displayState : (Math.round((Number.parseFloat(items[props.ev2SocItem].state) <= 1 ? Number.parseFloat(items[props.ev2SocItem].state) * 100 : Number.parseFloat(items[props.ev2SocItem].state))) + ' %')) : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && items[props.ev2SocItem]"
               style:
                 position: absolute
