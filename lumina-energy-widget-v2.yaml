@@ -957,8 +957,8 @@ slots:
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.windPowerItem]"
               style:
                 position: absolute
-                left: 12.5000%
-                top: 25.0000%
+                left: 19.5000%
+                top: 10.0000%
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#D7F8FF"
@@ -979,7 +979,7 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: 29.5000%
+                top: 19.5000%
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#00FFFF"
@@ -1000,7 +1000,7 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: 35.5000%
+                top: 25.5000%
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#7CFF4D"
@@ -1021,7 +1021,7 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: "=items[props.pvPrimaryPowerItem] ? '41.5000%' : '35.5000%'"
+                top: "=items[props.pvPrimaryPowerItem] ? '31.5000%' : '25.5000%'"
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#0088FF"
@@ -1042,7 +1042,7 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: "=items[props.pvPrimaryPowerItem] && items[props.pvSecondaryPowerItem] ? '47.5000%' : ((items[props.pvPrimaryPowerItem] || items[props.pvSecondaryPowerItem]) ? '41.5000%' : '35.5000%')"
+                top: "=items[props.pvPrimaryPowerItem] && items[props.pvSecondaryPowerItem] ? '37.5000%' : ((items[props.pvPrimaryPowerItem] || items[props.pvSecondaryPowerItem]) ? '31.5000%' : '25.5000%')"
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#A9FF7C"
