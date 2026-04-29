@@ -338,13 +338,13 @@ slots:
                     default:
                       - component: path
                         config:
-                          d: "M 185 86 L 415 270"
+                          d: "M 270 232 L 410 275"
                           class: luminaFlowBase
                           fill: none
                           stroke: "#0080ff"
                       - component: path
                         config:
-                          d: "M 185 86 L 415 270"
+                          d: "M 270 232 L 410 275"
                           class: luminaFlowShimmer
                           fill: none
                           stroke: "#0080ff"
@@ -367,7 +367,7 @@ slots:
                           default:
                             - component: animateMotion
                               config:
-                                path: "M 185 86 L 415 270"
+                                path: "M 270 232 L 410 275"
                                 dur: 2.6s
                                 begin: -.35s
                                 repeatCount: indefinite
@@ -381,7 +381,7 @@ slots:
                           default:
                             - component: animateMotion
                               config:
-                                path: "M 185 86 L 415 270"
+                                path: "M 270 232 L 410 275"
                                 dur: 2.6s
                                 begin: -.35s
                                 repeatCount: indefinite
