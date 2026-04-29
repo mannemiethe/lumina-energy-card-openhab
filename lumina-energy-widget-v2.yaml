@@ -1536,6 +1536,19 @@ slots:
                 zIndex: 1
           - component: img
             config:
+              src: =props.turbineOverlayImage
+              visible: "=items[props.windPowerItem] && items[props.windPowerItem].state !== 'NULL' && items[props.windPowerItem].state !== 'UNDEF' && Math.abs(Number.parseFloat(items[props.windPowerItem].state)) >= Number(props.flowThreshold || 30)"
+              style:
+                position: absolute
+                left: 48%
+                top: 14%
+                width: 9%
+                opacity: .78
+                filter: drop-shadow(0 0 16px rgba(0,255,255,.50))
+                pointerEvents: none
+                zIndex: 1
+          - component: img
+            config:
               src: "=props.heatPumpType === 'classic' ? props.classicHeatPumpOverlayImage : (props.heatPumpType === 'custom' ? props.customHeatPumpOverlayImage : props.heatPumpOverlayImage)"
               visible: "=items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state !== 'NULL' && items[props.heatPumpPowerItem].state !== 'UNDEF' && items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON'"
               style:
