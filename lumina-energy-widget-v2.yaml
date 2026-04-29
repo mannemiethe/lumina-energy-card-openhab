@@ -1261,27 +1261,6 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.solarForecastItem] ? items[props.solarForecastItem].displayState || items[props.solarForecastItem].state : ''"
-              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showForecastItem] && items[props.showForecastItem].state === 'ON' && items[props.solarForecastItem]"
-              style:
-                position: absolute
-                left: 53.7500%
-                top: 16.0000%
-                transform: translate(-50%, -50%) rotate(0deg) scale(1, 1) skew(0deg, 0deg)
-                transformOrigin: center center
-                color: "#00FFFF"
-                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: 11px
-                fontWeight: 800
-                letterSpacing: "clamp(.4px, .18vw, 2px)"
-                textTransform: uppercase
-                whiteSpace: nowrap
-                lineHeight: 1
-                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
-                zIndex: 4
-                pointerEvents: none
-          - component: Label
-            config:
               text: EV
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showEVItem] && items[props.showEVItem].state === 'ON'"
               style:
