@@ -14,7 +14,8 @@ Group gLuminaSecurity     "Lumina Security"
 // -----------------------------
 // Core power values (W)
 // -----------------------------
-Number:Power Lumina_PV_Power              "PV [%.0f W]"                    <sun>              (gLuminaEnergy)
+Number:Power Lumina_PV_Power              "PV Total [%.0f W]"              <sun>              (gLuminaEnergy)
+Number:Power Lumina_PV_Array1_Power       "PV Array 1 [%.0f W]"            <solarplant>       (gLuminaEnergy)
 Number:Power Lumina_PV_Array2_Power       "PV Array 2 [%.0f W]"            <solarplant>       (gLuminaEnergy)
 Number:Power Lumina_House_Load            "House [%.0f W]"                 <house>            (gLuminaEnergy)
 Number:Power Lumina_Grid_Power            "Grid [%.0f W]"                  <poweroutlet_eu>   (gLuminaEnergy)

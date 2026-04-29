@@ -25,6 +25,10 @@ props:
       label: PV Total Power Item
       type: TEXT
       default: Lumina_PV_Power
+    - name: pvPrimaryPowerItem
+      label: PV Array 1 Power Item
+      type: TEXT
+      default: Lumina_PV_Array1_Power
     - name: pvSecondaryPowerItem
       label: PV Array 2 Power Item
       type: TEXT
@@ -793,8 +797,8 @@ slots:
                     y: 156
                     transform: translate(100, 156) rotate(-9.3) skewX(-13) skewY(1) translate(-100, -156)
                     fill: "#7CFF4D"
-                    text: "=items[props.pvDailyItem] ? items[props.pvDailyItem].displayState || items[props.pvDailyItem].state : ''"
-                    visible: "=items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                    text: "=items[props.pvPrimaryPowerItem] ? items[props.pvPrimaryPowerItem].displayState || items[props.pvPrimaryPowerItem].state : ''"
+                    visible: "=items[props.pvPrimaryPowerItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
                   config:
                     class: luminaText luminaValue
@@ -804,6 +808,15 @@ slots:
                     fill: "#0088FF"
                     text: "=items[props.pvSecondaryPowerItem] ? items[props.pvSecondaryPowerItem].displayState || items[props.pvSecondaryPowerItem].state : ''"
                     visible: "=items[props.pvSecondaryPowerItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
+                - component: text
+                  config:
+                    class: luminaText luminaValue
+                    x: 100
+                    y: 184
+                    transform: translate(100, 156) rotate(-9.3) skewX(-13) skewY(1) translate(-100, -156)
+                    fill: "#A9FF7C"
+                    text: "=items[props.pvDailyItem] ? items[props.pvDailyItem].displayState || items[props.pvDailyItem].state : ''"
+                    visible: "=items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF') && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
 
                 - component: g
                   config:
@@ -969,8 +982,8 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.pvDailyItem] ? items[props.pvDailyItem].displayState || items[props.pvDailyItem].state : ''"
-              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              text: "=items[props.pvPrimaryPowerItem] ? items[props.pvPrimaryPowerItem].displayState || items[props.pvPrimaryPowerItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.pvPrimaryPowerItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
               style:
                 position: absolute
                 left: 12.5000%
@@ -995,10 +1008,31 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: 37.7778%
+                top: "=items[props.pvPrimaryPowerItem] ? '37.7778%' : '34.6667%'"
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#0088FF"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: 12px
+                fontWeight: 800
+                letterSpacing: 2px
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.pvDailyItem] ? items[props.pvDailyItem].displayState || items[props.pvDailyItem].state : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 12.5000%
+                top: "=items[props.pvPrimaryPowerItem] && items[props.pvSecondaryPowerItem] ? '40.8889%' : ((items[props.pvPrimaryPowerItem] || items[props.pvSecondaryPowerItem]) ? '37.7778%' : '34.6667%')"
+                transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
+                transformOrigin: center center
+                color: "#A9FF7C"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: 12px
                 fontWeight: 800
