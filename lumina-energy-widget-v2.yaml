@@ -1181,9 +1181,9 @@ slots:
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.temperatureItem]"
               style:
                 position: absolute
-                left: 41.0000%
-                top: 14.6667%
-                transform: translate(-50%, -50%) rotate(10deg) scale(1, 1) skew(-20deg, 3deg)
+                left: 43.0000%
+                top: 30.6667%
+                transform: translate(-50%, -50%) rotate(15deg) scale(1, 1) skew(11deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
