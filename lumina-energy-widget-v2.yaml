@@ -1041,9 +1041,9 @@ slots:
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.pvDailyItem] && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')"
               style:
                 position: absolute
-                left: 12.5000%
-                top: "=items[props.pvPrimaryPowerItem] && items[props.pvSecondaryPowerItem] ? '37.5000%' : ((items[props.pvPrimaryPowerItem] || items[props.pvSecondaryPowerItem]) ? '31.5000%' : '25.5000%')"
-                transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
+                left: 20.5000%
+                top: 62%
+                transform: translate(-50%, -50%) rotate(-15.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#A9FF7C"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
