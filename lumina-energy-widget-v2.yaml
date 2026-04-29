@@ -1540,9 +1540,9 @@ slots:
               visible: "=items[props.windPowerItem] && items[props.windPowerItem].state !== 'NULL' && items[props.windPowerItem].state !== 'UNDEF' && Math.abs(Number.parseFloat(items[props.windPowerItem].state)) >= Number(props.flowThreshold || 30)"
               style:
                 position: absolute
-                left: 48%
-                top: 14%
-                width: 9%
+                left: 6%
+                top: 2%
+                width: 45%
                 opacity: .78
                 filter: drop-shadow(0 0 16px rgba(0,255,255,.50))
                 pointerEvents: none
