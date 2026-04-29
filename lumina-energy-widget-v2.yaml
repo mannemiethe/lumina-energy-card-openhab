@@ -963,7 +963,7 @@ slots:
                 transformOrigin: center center
                 color: "#D7F8FF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(9.5px, 1.55vw, 20px)"
+                fontSize: "clamp(11px, 1.85vw, 24px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -984,7 +984,7 @@ slots:
                 transformOrigin: center center
                 color: "#00FFFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(9.5px, 1.55vw, 20px)"
+                fontSize: "clamp(11px, 1.85vw, 24px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -1005,7 +1005,7 @@ slots:
                 transformOrigin: center center
                 color: "#7CFF4D"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(9.5px, 1.55vw, 20px)"
+                fontSize: "clamp(11px, 1.85vw, 24px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -1026,7 +1026,7 @@ slots:
                 transformOrigin: center center
                 color: "#0088FF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(9.5px, 1.55vw, 20px)"
+                fontSize: "clamp(11px, 1.85vw, 24px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
@@ -1047,7 +1047,7 @@ slots:
                 transformOrigin: center center
                 color: "#A9FF7C"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(9.5px, 1.55vw, 20px)"
+                fontSize: "clamp(11px, 1.85vw, 24px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
