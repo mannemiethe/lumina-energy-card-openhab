@@ -1203,7 +1203,7 @@ slots:
               style:
                 position: absolute
                 left: 78.7500%
-                top: 24.8889%
+                top: 17.8889%
                 transform: translate(-50%, -50%) rotate(-5.5deg) scale(1, 1) skew(-16deg, -5deg)
                 transformOrigin: center center
                 color: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FFB347' : '#4DA3FF'"
