@@ -1188,9 +1188,9 @@ slots:
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
               style:
                 position: absolute
-                left: 86.2500%
-                top: 84.6667%
-                transform: translate(-50%, -50%) rotate(-6deg) scale(1, 1) skew(0deg, 0deg)
+                left: 70.2500%
+                top: 93.2%
+                transform: translate(-50%, -50%) rotate(-25deg) scale(1, 1) skew(35deg, 0deg)
                 transformOrigin: center center
                 color: "#44FFE3"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
