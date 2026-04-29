@@ -1160,9 +1160,9 @@ slots:
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
               style:
                 position: absolute
-                left: 53.5000%
-                top: 22.2222%
-                transform: translate(-50%, -50%) rotate(-9deg) scale(1, 1) skew(-20deg, 3deg)
+                left: 60.5000%
+                top: 50.2222%
+                transform: translate(-50%, -50%) rotate(-18deg) scale(1, 1) skew(-20deg, 3deg)
                 transformOrigin: center center
                 color: "#00F1F2"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
