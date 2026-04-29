@@ -966,14 +966,14 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: 31.0000%
+                top: 29.5000%
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#00FFFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -987,14 +987,14 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: 35.0000%
+                top: 35.5000%
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#7CFF4D"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1008,14 +1008,14 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: "=items[props.pvPrimaryPowerItem] ? '39.0000%' : '35.0000%'"
+                top: "=items[props.pvPrimaryPowerItem] ? '41.5000%' : '35.5000%'"
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#0088FF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1029,14 +1029,14 @@ slots:
               style:
                 position: absolute
                 left: 12.5000%
-                top: "=items[props.pvPrimaryPowerItem] && items[props.pvSecondaryPowerItem] ? '43.0000%' : ((items[props.pvPrimaryPowerItem] || items[props.pvSecondaryPowerItem]) ? '39.0000%' : '35.0000%')"
+                top: "=items[props.pvPrimaryPowerItem] && items[props.pvSecondaryPowerItem] ? '47.5000%' : ((items[props.pvPrimaryPowerItem] || items[props.pvSecondaryPowerItem]) ? '41.5000%' : '35.5000%')"
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
                 color: "#A9FF7C"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1055,9 +1055,9 @@ slots:
                 transformOrigin: center center
                 color: "#00FFFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1076,9 +1076,9 @@ slots:
                 transformOrigin: center center
                 color: "#00FFFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1097,9 +1097,9 @@ slots:
                 transformOrigin: center center
                 color: "#00F1F2"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1118,9 +1118,9 @@ slots:
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1139,9 +1139,9 @@ slots:
                 transformOrigin: center center
                 color: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FFB347' : '#4DA3FF'"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1160,9 +1160,9 @@ slots:
                 transformOrigin: center center
                 color: "#00FFFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1181,9 +1181,9 @@ slots:
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1202,9 +1202,9 @@ slots:
                 transformOrigin: center center
                 color: "#44FFE3"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1225,7 +1225,7 @@ slots:
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: 11px
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1239,14 +1239,14 @@ slots:
               style:
                 position: absolute
                 left: 75.3750%
-                top: 58.0000%
+                top: 57.0000%
                 transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1260,14 +1260,14 @@ slots:
               style:
                 position: absolute
                 left: 74.6250%
-                top: 62.2000%
+                top: 63.0000%
                 transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1281,14 +1281,14 @@ slots:
               style:
                 position: absolute
                 left: 74.3750%
-                top: 66.4000%
+                top: 69.0000%
                 transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1302,14 +1302,14 @@ slots:
               style:
                 position: absolute
                 left: 90.0000%
-                top: 66.4000%
+                top: 64.0000%
                 transform: translate(-50%, -50%) rotate(14deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1323,14 +1323,14 @@ slots:
               style:
                 position: absolute
                 left: 90.0000%
-                top: 70.6000%
+                top: 70.0000%
                 transform: translate(-50%, -50%) rotate(14deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
@@ -1344,14 +1344,14 @@ slots:
               style:
                 position: absolute
                 left: 89.7500%
-                top: 74.8000%
+                top: 76.0000%
                 transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
                 color: "#F5F3EE"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(11px, 1.35vw, 18px)"
+                fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
-                letterSpacing: 2px
+                letterSpacing: "clamp(.4px, .18vw, 2px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
