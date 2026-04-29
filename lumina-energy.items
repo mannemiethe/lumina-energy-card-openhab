@@ -17,10 +17,10 @@ Group gLuminaSecurity     "Lumina Security"
 Number:Power Lumina_PV_Power              "PV Total [%.0f W]"              <sun>              (gLuminaEnergy)
 Number:Power Lumina_PV_Array1_Power       "PV Array 1 [%.0f W]"            <solarplant>       (gLuminaEnergy)
 Number:Power Lumina_PV_Array2_Power       "PV Array 2 [%.0f W]"            <solarplant>       (gLuminaEnergy)
+Number:Power Lumina_Wind_Power            "Wind Turbine [%.0f W]"        <wind>             (gLuminaEnergy)
 Number:Power Lumina_House_Load            "House [%.0f W]"                 <house>            (gLuminaEnergy)
 Number:Power Lumina_Grid_Power            "Grid [%.0f W]"                  <poweroutlet_eu>   (gLuminaEnergy)
 Number:Power Lumina_Battery_Power         "Battery [%.0f W]"               <batterylevel>     (gLuminaEnergy)
-Number:Power Lumina_Inverter_Power        "Inverter [%.0f W]"              <energy>           (gLuminaEnergy)
 
 // Sign conventions used by widget:
 // Grid   : + import, - export

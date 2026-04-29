@@ -53,10 +53,6 @@ props:
       label: Battery SOC Item
       type: TEXT
       default: Lumina_Battery_SOC
-    - name: inverterPowerItem
-      label: Inverter Power Item
-      type: TEXT
-      default: Lumina_Inverter_Power
     - name: evPowerItem
       label: EV Power Item
       type: TEXT
@@ -81,6 +77,10 @@ props:
       label: Heat Pump Power Item
       type: TEXT
       default: Lumina_HeatPump_Power
+    - name: windPowerItem
+      label: Wind Turbine Power Item
+      type: TEXT
+      default: Lumina_Wind_Power
     - name: solarForecastItem
       label: Solar Forecast Item
       type: TEXT
@@ -869,14 +869,6 @@ slots:
                 - component: text
                   config:
                     class: luminaText luminaValue
-                    x: 400
-                    y: 238
-                    fill: "#00FFFF"
-                    text: "=items[props.inverterPowerItem] ? items[props.inverterPowerItem].displayState || items[props.inverterPowerItem].state : ''"
-                    visible: "=items[props.inverterPowerItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
-                - component: text
-                  config:
-                    class: luminaText luminaValue
                     x: 282
                     y: 208
                     transform: translate(282, 208) rotate(-36) skewX(-30) skewY(37) translate(-282, -208)
@@ -1150,27 +1142,6 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.inverterPowerItem] ? items[props.inverterPowerItem].displayState || items[props.inverterPowerItem].state : ''"
-              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.inverterPowerItem]"
-              style:
-                position: absolute
-                left: 50.0000%
-                top: 52.8889%
-                transform: translate(-50%, -50%) rotate(0deg) scale(1, 1) skew(0deg, 0deg)
-                transformOrigin: center center
-                color: "#00FFFF"
-                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
-                fontSize: "clamp(8.5px, 1.35vw, 18px)"
-                fontWeight: 800
-                letterSpacing: "clamp(.4px, .18vw, 2px)"
-                textTransform: uppercase
-                whiteSpace: nowrap
-                lineHeight: 1
-                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
-                zIndex: 4
-                pointerEvents: none
-          - component: Label
-            config:
               text: "=items[props.heatPumpPowerItem] ? items[props.heatPumpPowerItem].displayState || items[props.heatPumpPowerItem].state : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON'"
               style:
@@ -1401,7 +1372,7 @@ slots:
           - component: img
             config:
               src: =props.inverterOverlayImage
-              visible: "=items[props.inverterPowerItem] && items[props.inverterPowerItem].state !== 'NULL' && items[props.inverterPowerItem].state !== 'UNDEF'"
+              visible: "=((items[props.pvPowerItem] && items[props.pvPowerItem].state !== 'NULL' && items[props.pvPowerItem].state !== 'UNDEF' && !(items[props.showPVItem] && items[props.showPVItem].state === 'OFF')) || (items[props.windPowerItem] && items[props.windPowerItem].state !== 'NULL' && items[props.windPowerItem].state !== 'UNDEF') || (items[props.batteryPowerItem] && items[props.batteryPowerItem].state !== 'NULL' && items[props.batteryPowerItem].state !== 'UNDEF' && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')))"
               style:
                 position: absolute
                 left: 45%
