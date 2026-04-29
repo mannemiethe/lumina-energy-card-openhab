@@ -1409,8 +1409,8 @@ slots:
               visible: "=items[props.poolPowerItem] && items[props.poolPowerItem].state !== 'NULL' && items[props.poolPowerItem].state !== 'UNDEF' && items[props.showPoolItem] && items[props.showPoolItem].state === 'ON'"
               style:
                 position: absolute
-                left: 43%
-                top: 83%
+                left: 46%
+                top: 79%
                 width: 28%
                 opacity: .90
                 filter: drop-shadow(0 0 16px rgba(68,255,227,.38))
