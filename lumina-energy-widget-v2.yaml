@@ -1395,13 +1395,13 @@ slots:
               visible: "=items[props.batteryPowerItem] && items[props.batteryPowerItem].state !== 'NULL' && items[props.batteryPowerItem].state !== 'UNDEF' && items[props.batterySocItem] && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
               style:
                 position: absolute
-                left: 41.55%
-                top: 59.8%
+                left: 41.2%
+                top: 65.8%
                 width: 3.0%
-                height: 13.8%
+                height: 18.8%
                 margin: 0
                 padding: 0
-                transform: perspective(120px) rotateY(18deg) rotateZ(-1deg) skewY(6deg)
+                transform: perspective(20px) rotateY(0deg) rotateZ(0deg) skewY(-22deg)
                 transformOrigin: center center
                 pointerEvents: none
                 zIndex: 3
