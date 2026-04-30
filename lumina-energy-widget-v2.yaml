@@ -275,8 +275,8 @@ slots:
                             .luminaValue { font-size: 12px; }
                             .luminaFlowBase { fill: none !important; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .32; filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 12px currentColor); }
                             .luminaFlowShimmer { fill: none !important; stroke-width: 7.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 92; stroke-dashoffset: 100; opacity: .96; filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 20px currentColor) drop-shadow(0 0 38px currentColor); animation: luminaGlowPulse .65s ease-in-out infinite; }
-                            .luminaFlowDot { display: none; }
-                            .luminaFlowDotHalo { display: none; }
+                            .luminaFlowDot { filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 18px currentColor); opacity: .95; transform-box: fill-box; transform-origin: center; animation: luminaPulseFlash .65s ease-in-out infinite; }
+                            .luminaFlowDotHalo { opacity: .36; filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 34px currentColor) drop-shadow(0 0 58px currentColor); transform-box: fill-box; transform-origin: center; animation: luminaPulseFlash .65s ease-in-out infinite; }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
                             .luminaFlowShimmer.reverse3 { animation-delay: -.56s, 0s; }
                             .luminaFlowShimmer.reverse4 { animation-delay: -.84s, 0s; }
@@ -315,13 +315,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#00FFFF"
                         slots:
@@ -333,13 +329,9 @@ slots:
                                 begin: 0s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#00FFFF"
                         slots:
@@ -379,13 +371,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] && items[props.windPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#0080ff"
                         slots:
@@ -397,13 +385,9 @@ slots:
                                 begin: -.35s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#0080ff"
                         slots:
@@ -444,13 +428,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
                           visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
@@ -463,13 +443,9 @@ slots:
                                 begin: -.7s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
                           visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
@@ -511,13 +487,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#00f1f2"
                           visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
@@ -530,13 +502,9 @@ slots:
                                 begin: -1.05s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#00f1f2"
                           visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
@@ -577,13 +545,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                         slots:
@@ -595,13 +559,9 @@ slots:
                                 begin: -1.4s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                         slots:
@@ -642,13 +602,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                           visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
@@ -661,13 +617,9 @@ slots:
                                 begin: -1.75s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                           visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
@@ -708,13 +660,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#7A5CFF"
                         slots:
@@ -726,13 +674,9 @@ slots:
                                 begin: -2.1s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#7A5CFF"
                         slots:
@@ -772,13 +716,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#FF6B2E"
                         slots:
@@ -790,13 +730,9 @@ slots:
                                 begin: -2.45s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#FF6B2E"
                         slots:
@@ -836,13 +772,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] && items[props.poolPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#44FFE3"
                         slots:
@@ -854,13 +786,9 @@ slots:
                                 begin: -2.65s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#44FFE3"
                         slots:
@@ -900,13 +828,9 @@ slots:
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -38
-                          y: -5
-                          width: 76
-                          height: 10
-                          rx: 0
+                          r: 10
                           class: luminaFlowDotHalo
                           fill: "#FF4FD8"
                         slots:
@@ -918,13 +842,9 @@ slots:
                                 begin: -2.8s
                                 repeatCount: indefinite
                                 rotate: auto
-                      - component: rect
+                      - component: circle
                         config:
-                          x: -30
-                          y: -2.5
-                          width: 60
-                          height: 5
-                          rx: 0
+                          r: 3.4
                           class: luminaFlowDot
                           fill: "#FF4FD8"
                         slots:
