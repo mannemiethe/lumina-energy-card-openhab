@@ -401,7 +401,7 @@ slots:
                 - component: g
                   config:
                     class: luminaFlowGroup
-                    visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
+                    visible: "=items[props.batteryPowerItem] && items[props.batteryPowerItem].state !== 'NULL' && items[props.batteryPowerItem].state !== 'UNDEF' && !(items[props.showBatteryItem] && items[props.showBatteryItem].state === 'OFF')"
                   slots:
                     default:
                       - component: path
@@ -417,6 +417,7 @@ slots:
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
                           pathLength: 100
+                          visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animate
@@ -431,6 +432,7 @@ slots:
                           r: 7
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
+                          visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -445,6 +447,7 @@ slots:
                           r: 3.2
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
+                          visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
