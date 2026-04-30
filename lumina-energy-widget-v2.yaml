@@ -1174,7 +1174,7 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.homeTotalLoadItem] ? items[props.homeTotalLoadItem].displayState || items[props.homeTotalLoadItem].state : ''"
+              text: "=items[props.homeTotalLoadItem] ? 'TOTAL ' + (items[props.homeTotalLoadItem].displayState || items[props.homeTotalLoadItem].state) : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
               style:
                 position: absolute
@@ -1187,6 +1187,48 @@ slots:
                 fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
                 letterSpacing: "clamp(.4px, .18vw, 2px)"
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.homeInverterPowerItem] ? 'INV ' + (items[props.homeInverterPowerItem].displayState || items[props.homeInverterPowerItem].state) : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.homeInverterPowerItem]"
+              style:
+                position: absolute
+                left: 55.2000%
+                top: 43.9000%
+                transform: translate(-50%, -50%) rotate(-17deg) scale(1, 1) skew(-20deg, 3deg)
+                transformOrigin: center center
+                color: "#00F1F2"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: "clamp(7.5px, 1.05vw, 15px)"
+                fontWeight: 800
+                letterSpacing: "clamp(.3px, .14vw, 1.5px)"
+                textTransform: uppercase
+                whiteSpace: nowrap
+                lineHeight: 1
+                textShadow: "0 0 3px rgba(0,0,0,.95), 0 0 5px rgba(245,243,238,.55), 0 0 13px currentColor"
+                zIndex: 4
+                pointerEvents: none
+          - component: Label
+            config:
+              text: "=items[props.homeGridPowerItem] ? 'GRID ' + (items[props.homeGridPowerItem].displayState || items[props.homeGridPowerItem].state) : ''"
+              visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF') && items[props.homeGridPowerItem] && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+              style:
+                position: absolute
+                left: 67.8000%
+                top: 35.8000%
+                transform: translate(-50%, -50%) rotate(-14deg) scale(1, 1) skew(-16deg, -4deg)
+                transformOrigin: center center
+                color: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FFB347' : '#4DA3FF'"
+                fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
+                fontSize: "clamp(7.5px, 1.05vw, 15px)"
+                fontWeight: 800
+                letterSpacing: "clamp(.3px, .14vw, 1.5px)"
                 textTransform: uppercase
                 whiteSpace: nowrap
                 lineHeight: 1
