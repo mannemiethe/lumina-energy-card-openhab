@@ -273,8 +273,8 @@ slots:
                             .luminaText { display: none; font-family: 'Exo 2', Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: rgba(0,15,25,.45); stroke-width: 2px; text-shadow: 0 0 4px rgba(245,243,238,.6), 0 0 14px currentColor; }
                             .luminaSmall { font-size: 12px; letter-spacing: 1px; }
                             .luminaValue { font-size: 12px; }
-                            .luminaFlowBase { fill: none !important; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .34; filter: drop-shadow(0 0 6px currentColor); }
-                            .luminaFlowShimmer { fill: none !important; stroke-width: 13; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 18 82; stroke-dashoffset: 100; opacity: 1; filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 22px currentColor) drop-shadow(0 0 44px currentColor); animation: luminaGlowPulse .45s ease-in-out infinite; }
+                            .luminaFlowBase { fill: none !important; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .22; filter: drop-shadow(0 0 6px currentColor); }
+                            .luminaFlowShimmer { fill: none !important; stroke-width: 15; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 26 140; stroke-dashoffset: 140; opacity: 1; filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 22px currentColor) drop-shadow(0 0 44px currentColor); animation: luminaGlowPulse .45s ease-in-out infinite; }
                             .luminaFlowDot { display: none; }
                             .luminaFlowDotHalo { display: none; }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
@@ -311,7 +311,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -375,7 +375,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] && items[props.windPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -440,7 +440,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -507,7 +507,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -573,7 +573,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -638,7 +638,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -704,7 +704,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -768,7 +768,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -832,7 +832,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] && items[props.poolPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
@@ -896,7 +896,7 @@ slots:
                             - component: animate
                               config:
                                 attributeName: stroke-dashoffset
-                                from: 100
+                                from: 140
                                 to: 0
                                 dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
