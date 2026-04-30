@@ -273,10 +273,10 @@ slots:
                             .luminaText { display: none; font-family: 'Exo 2', Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: rgba(0,15,25,.45); stroke-width: 2px; text-shadow: 0 0 4px rgba(245,243,238,.6), 0 0 14px currentColor; }
                             .luminaSmall { font-size: 12px; letter-spacing: 1px; }
                             .luminaValue { font-size: 12px; }
-                            .luminaFlowBase { fill: none !important; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .32; filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 12px currentColor); }
-                            .luminaFlowShimmer { fill: none !important; stroke-width: 7.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 8 92; stroke-dashoffset: 100; opacity: .96; filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 20px currentColor) drop-shadow(0 0 38px currentColor); animation: luminaGlowPulse .65s ease-in-out infinite; }
-                            .luminaFlowDot { filter: drop-shadow(0 0 8px currentColor) drop-shadow(0 0 18px currentColor); opacity: .95; transform-box: fill-box; transform-origin: center; animation: luminaPulseFlash .65s ease-in-out infinite; }
-                            .luminaFlowDotHalo { opacity: .36; filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 34px currentColor) drop-shadow(0 0 58px currentColor); transform-box: fill-box; transform-origin: center; animation: luminaPulseFlash .65s ease-in-out infinite; }
+                            .luminaFlowBase { fill: none !important; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .20; filter: drop-shadow(0 0 3px currentColor); }
+                            .luminaFlowShimmer { fill: none !important; stroke-width: 4.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 34 96; stroke-dashoffset: 100; opacity: 1; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor) drop-shadow(0 0 32px currentColor); animation: luminaGlowPulse .5s ease-in-out infinite; }
+                            .luminaFlowDot { display: none; }
+                            .luminaFlowDotHalo { display: none; }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
                             .luminaFlowShimmer.reverse3 { animation-delay: -.56s, 0s; }
                             .luminaFlowShimmer.reverse4 { animation-delay: -.84s, 0s; }
