@@ -38,9 +38,21 @@ props:
       type: TEXT
       default: Lumina_PV_Daily
     - name: homeLoadItem
-      label: House Load Item
+      label: House Load Item (legacy)
       type: TEXT
       default: Lumina_House_Load
+    - name: homeTotalLoadItem
+      label: House Total Load Item
+      type: TEXT
+      default: Lumina_Home_Total_Load
+    - name: homeInverterPowerItem
+      label: House from Inverter Power Item
+      type: TEXT
+      default: Lumina_Home_Inverter_Power
+    - name: homeGridPowerItem
+      label: House from Grid Power Item (+import / -export)
+      type: TEXT
+      default: Lumina_Home_Grid_Power
     - name: gridPowerItem
       label: Grid Power Item (+import / -export)
       type: TEXT
@@ -445,18 +457,18 @@ slots:
                 - component: g
                   config:
                     class: luminaFlowGroup
-                    visible: "=Math.abs(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0)) >= Number(props.flowThreshold || 30)"
+                    visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                   slots:
                     default:
                       - component: path
                         config:
-                          d: "=(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
+                          d: "=(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
                           class: luminaFlowBase
                           fill: none
                           stroke: "#00f1f2"
                       - component: path
                         config:
-                          d: "=(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
+                          d: "=(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke: "#00f1f2"
@@ -468,7 +480,7 @@ slots:
                                 attributeName: stroke-dashoffset
                                 from: 100
                                 to: 0
-                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
+                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
                       - component: circle
                         config:
@@ -479,8 +491,8 @@ slots:
                           default:
                             - component: animateMotion
                               config:
-                                path: "=(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
-                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
+                                path: "=(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
+                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 begin: -1.05s
                                 repeatCount: indefinite
                                 rotate: auto
@@ -493,8 +505,8 @@ slots:
                           default:
                             - component: animateMotion
                               config:
-                                path: "=(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
-                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeLoadItem] && items[props.homeLoadItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
+                                path: "=(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0) >= 0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
+                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 begin: -1.05s
                                 repeatCount: indefinite
                                 rotate: auto
@@ -557,21 +569,21 @@ slots:
                 - component: g
                   config:
                     class: luminaFlowGroup
-                    visible: "=Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
+                    visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30) && !(items[props.showGridItem] && items[props.showGridItem].state === 'OFF')"
                   slots:
                     default:
                       - component: path
                         config:
-                          d: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                          d: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
                           class: luminaFlowBase
                           fill: none
-                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                          stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                       - component: path
                         config:
-                          d: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                          d: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
                           class: luminaFlowShimmer
                           fill: none
-                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                          stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                           pathLength: 100
                         slots:
                           default:
@@ -580,19 +592,19 @@ slots:
                                 attributeName: stroke-dashoffset
                                 from: 100
                                 to: 0
-                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
+                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 repeatCount: indefinite
                       - component: circle
                         config:
                           r: 7
                           class: luminaFlowDotHalo
-                          fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                          fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                         slots:
                           default:
                             - component: animateMotion
                               config:
-                                path: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
-                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
+                                path: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 begin: -1.75s
                                 repeatCount: indefinite
                                 rotate: auto
@@ -600,13 +612,13 @@ slots:
                         config:
                           r: 3.2
                           class: luminaFlowDot
-                          fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
+                          fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                         slots:
                           default:
                             - component: animateMotion
                               config:
-                                path: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
-                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
+                                path: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                                dur: "=(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)), 12000) / 12000 * 2.45).toFixed(2) + 's'"
                                 begin: -1.75s
                                 repeatCount: indefinite
                                 rotate: auto
@@ -902,7 +914,7 @@ slots:
                     y: 100
                     transform: translate(428, 100) rotate(-9) skewX(-20) skewY(3) translate(-428, -100)
                     fill: "#00F1F2"
-                    text: "=items[props.homeLoadItem] ? items[props.homeLoadItem].displayState || items[props.homeLoadItem].state : ''"
+                    text: "=items[props.homeTotalLoadItem] ? items[props.homeTotalLoadItem].displayState || items[props.homeTotalLoadItem].state : ''"
                     visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
                   config:
@@ -1156,7 +1168,7 @@ slots:
                 pointerEvents: none
           - component: Label
             config:
-              text: "=items[props.homeLoadItem] ? items[props.homeLoadItem].displayState || items[props.homeLoadItem].state : ''"
+              text: "=items[props.homeTotalLoadItem] ? items[props.homeTotalLoadItem].displayState || items[props.homeTotalLoadItem].state : ''"
               visible: "=!(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
               style:
                 position: absolute
@@ -1389,7 +1401,7 @@ slots:
           - component: img
             config:
               src: "=props.houseType === 'new' ? props.newHouseOverlayImage : (props.houseType === 'custom' ? props.customHouseOverlayImage : props.oldHouseOverlayImage)"
-              visible: "=items[props.homeLoadItem] && items[props.homeLoadItem].state !== 'NULL' && items[props.homeLoadItem].state !== 'UNDEF'"
+              visible: "=items[props.homeTotalLoadItem] && items[props.homeTotalLoadItem].state !== 'NULL' && items[props.homeTotalLoadItem].state !== 'UNDEF'"
               style:
                 position: absolute
                 left: 25%
@@ -1657,7 +1669,9 @@ slots:
             config:
               action: analyzer
               actionAnalyzerItems:
-                - =props.homeLoadItem
+                - =props.homeTotalLoadItem
+                - =props.homeInverterPowerItem
+                - =props.homeGridPowerItem
                 - =props.temperatureItem
                 - =props.humidityItem
               style:
