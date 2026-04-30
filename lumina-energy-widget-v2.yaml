@@ -273,8 +273,8 @@ slots:
                             .luminaText { display: none; font-family: 'Exo 2', Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: rgba(0,15,25,.45); stroke-width: 2px; text-shadow: 0 0 4px rgba(245,243,238,.6), 0 0 14px currentColor; }
                             .luminaSmall { font-size: 12px; letter-spacing: 1px; }
                             .luminaValue { font-size: 12px; }
-                            .luminaFlowBase { fill: none !important; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .20; filter: drop-shadow(0 0 3px currentColor); }
-                            .luminaFlowShimmer { fill: none !important; stroke-width: 4.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 34 96; stroke-dashoffset: 100; opacity: 1; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor) drop-shadow(0 0 32px currentColor); animation: luminaGlowPulse .5s ease-in-out infinite; }
+                            .luminaFlowBase { fill: none !important; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .14; filter: drop-shadow(0 0 3px currentColor); }
+                            .luminaFlowShimmer { fill: none !important; stroke-width: 6.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 42 88; stroke-dashoffset: 100; opacity: 1; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor) drop-shadow(0 0 32px currentColor); animation: luminaGlowPulse .5s ease-in-out infinite; }
                             .luminaFlowDot { display: none; }
                             .luminaFlowDotHalo { display: none; }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
@@ -319,6 +319,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#00FFFF"
                         slots:
                           default:
@@ -333,6 +334,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#00FFFF"
                         slots:
                           default:
@@ -375,6 +377,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#0080ff"
                         slots:
                           default:
@@ -389,6 +392,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#0080ff"
                         slots:
                           default:
@@ -432,8 +436,8 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
-                          visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -447,8 +451,8 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
-                          visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -491,8 +495,8 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#00f1f2"
-                          visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -506,8 +510,8 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#00f1f2"
-                          visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -549,6 +553,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                         slots:
                           default:
@@ -563,6 +568,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
                         slots:
                           default:
@@ -606,8 +612,8 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
-                          visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -621,8 +627,8 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
-                          visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
                           default:
                             - component: animateMotion
@@ -664,6 +670,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#7A5CFF"
                         slots:
                           default:
@@ -678,6 +685,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#7A5CFF"
                         slots:
                           default:
@@ -720,6 +728,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#FF6B2E"
                         slots:
                           default:
@@ -734,6 +743,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#FF6B2E"
                         slots:
                           default:
@@ -776,6 +786,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#44FFE3"
                         slots:
                           default:
@@ -790,6 +801,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#44FFE3"
                         slots:
                           default:
@@ -832,6 +844,7 @@ slots:
                         config:
                           r: 10
                           class: luminaFlowDotHalo
+                          visible: false
                           fill: "#FF4FD8"
                         slots:
                           default:
@@ -846,6 +859,7 @@ slots:
                         config:
                           r: 3.4
                           class: luminaFlowDot
+                          visible: false
                           fill: "#FF4FD8"
                         slots:
                           default:
