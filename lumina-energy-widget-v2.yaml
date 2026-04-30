@@ -890,6 +890,7 @@ slots:
                             232 L 410 275' : 'M 410 275 L 270 232'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#00FFFF"
                       - component: path
                         config:
@@ -898,6 +899,7 @@ slots:
                             232 L 410 275' : 'M 410 275 L 270 232'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#00FFFF"
                           mask: url(#luminaFlowPulseMask1)
                 - component: g
@@ -915,6 +917,7 @@ slots:
                             275 226 L 415 270' : 'M 415 270 L 275 226'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#0080ff"
                       - component: path
                         config:
@@ -923,6 +926,7 @@ slots:
                             275 226 L 415 270' : 'M 415 270 L 275 226'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#0080ff"
                           mask: url(#luminaFlowPulseMask2)
                 - component: g
@@ -941,6 +945,7 @@ slots:
                             'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
                             '#2ECC71' : '#F1C40F'"
@@ -951,6 +956,7 @@ slots:
                             'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
                             '#2ECC71' : '#F1C40F'"
@@ -974,6 +980,7 @@ slots:
                             566 235 L 480 263'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#00f1f2"
                       - component: path
                         config:
@@ -983,6 +990,7 @@ slots:
                             566 235 L 480 263'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#00f1f2"
                           visible: =Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0)) >=
@@ -1006,6 +1014,7 @@ slots:
                             L 616 200'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "=(Number.parseFloat((items[props.gridPowerItem] &&
                             items[props.gridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
@@ -1017,6 +1026,7 @@ slots:
                             L 616 200'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "=(Number.parseFloat((items[props.gridPowerItem] &&
                             items[props.gridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
@@ -1038,6 +1048,7 @@ slots:
                             220 L 601.4 200'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
@@ -1049,6 +1060,7 @@ slots:
                             220 L 601.4 200'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
@@ -1074,6 +1086,7 @@ slots:
                             504 300'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#7A5CFF"
                       - component: path
                         config:
@@ -1083,6 +1096,7 @@ slots:
                             504 300'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#7A5CFF"
                           mask: url(#luminaFlowPulseMask7)
                 - component: g
@@ -1103,6 +1117,7 @@ slots:
                             L 495 306'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#FF6B2E"
                       - component: path
                         config:
@@ -1112,6 +1127,7 @@ slots:
                             L 495 306'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#FF6B2E"
                           mask: url(#luminaFlowPulseMask8)
                 - component: g
@@ -1132,6 +1148,7 @@ slots:
                             L 480 308'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#44FFE3"
                       - component: path
                         config:
@@ -1141,6 +1158,7 @@ slots:
                             L 480 308'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#44FFE3"
                           mask: url(#luminaFlowPulseMask9)
                 - component: g
@@ -1160,6 +1178,7 @@ slots:
                             'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
                           class: luminaFlowBase
                           fill: none
+                          stroke-width: 1.5
                           stroke: "#FF4FD8"
                       - component: path
                         config:
@@ -1168,6 +1187,7 @@ slots:
                             'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
                           class: luminaFlowShimmer
                           fill: none
+                          stroke-width: 2.5
                           stroke: "#FF4FD8"
                           mask: url(#luminaFlowPulseMask10)
                 - component: text
