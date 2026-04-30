@@ -297,13 +297,13 @@ slots:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
                           class: luminaFlowBase
                           fill: none
-                          stroke: "#7CFF4D"
+                          stroke: "#00FFFF"
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
                           class: luminaFlowShimmer
                           fill: none
-                          stroke: "#7CFF4D"
+                          stroke: "#00FFFF"
                           pathLength: 100
                         slots:
                           default:
@@ -318,7 +318,7 @@ slots:
                         config:
                           r: 7
                           class: luminaFlowDotHalo
-                          fill: "#7CFF4D"
+                          fill: "#00FFFF"
                         slots:
                           default:
                             - component: animateMotion
@@ -332,7 +332,7 @@ slots:
                         config:
                           r: 3.2
                           class: luminaFlowDot
-                          fill: "#7CFF4D"
+                          fill: "#00FFFF"
                         slots:
                           default:
                             - component: animateMotion
