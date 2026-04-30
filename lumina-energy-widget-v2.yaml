@@ -317,11 +317,11 @@ slots:
 
                             .luminaFlowBase { fill: none !important;
                             stroke-width: 2; stroke-linecap: round;
-                            stroke-linejoin: round; stroke-opacity: .08; filter:
+                            stroke-linejoin: round; stroke-opacity: .06; filter:
                             drop-shadow(0 0 3px currentColor); }
 
                             .luminaFlowShimmer { fill: none !important;
-                            stroke-width: 10; stroke-linecap: round;
+                            stroke-width: 18; stroke-linecap: round;
                             stroke-linejoin: round; stroke-dasharray: none;
                             stroke-dashoffset: 0; opacity: 1; filter:
                             drop-shadow(0 0 5px currentColor) drop-shadow(0 0
@@ -378,7 +378,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -397,7 +397,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -453,7 +453,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -473,7 +473,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -531,7 +531,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -551,7 +551,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -615,7 +615,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -638,7 +638,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -705,7 +705,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -725,7 +725,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -789,7 +789,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -810,7 +810,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -879,7 +879,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -898,7 +898,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -958,7 +958,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -977,7 +977,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -1037,7 +1037,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -1057,7 +1057,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
@@ -1118,7 +1118,7 @@ slots:
                           default:
                             - component: circle
                               config:
-                                r: 140
+                                r: 260
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -1138,7 +1138,7 @@ slots:
                                       rotate: auto
                             - component: circle
                               config:
-                                r: 70
+                                r: 150
                                 fill: white
                               slots:
                                 default:
