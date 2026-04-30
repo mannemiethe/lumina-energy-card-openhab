@@ -268,14 +268,14 @@ slots:
                         config:
                           stylesheet: |
                             @keyframes luminaShimmer { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
-                            @keyframes luminaGlowPulse { 0%,100% { opacity: .72; } 50% { opacity: 1; } }
+                            @keyframes luminaGlowPulse { 0%,100% { opacity: .68; } 45% { opacity: 1; } 55% { opacity: .92; } }
                             .luminaText { display: none; font-family: 'Exo 2', Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: rgba(0,15,25,.45); stroke-width: 2px; text-shadow: 0 0 4px rgba(245,243,238,.6), 0 0 14px currentColor; }
                             .luminaSmall { font-size: 12px; letter-spacing: 1px; }
                             .luminaValue { font-size: 12px; }
-                            .luminaFlowBase { fill: none !important; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .18; }
-                            .luminaFlowShimmer { fill: none !important; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 14 86; stroke-dashoffset: 100; filter: drop-shadow(0 0 10px currentColor); animation: luminaShimmer 2.6s linear infinite, luminaGlowPulse .9s ease-in-out infinite; }
-                            .luminaFlowDot { filter: drop-shadow(0 0 10px currentColor); opacity: .96; }
-                            .luminaFlowDotHalo { opacity: .18; filter: drop-shadow(0 0 14px currentColor); }
+                            .luminaFlowBase { fill: none !important; stroke-width: 2.2; stroke-linecap: square; stroke-linejoin: round; stroke-opacity: .32; filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 12px currentColor); }
+                            .luminaFlowShimmer { fill: none !important; stroke-width: 5.2; stroke-linecap: square; stroke-linejoin: round; stroke-dasharray: 10 34 2 54; stroke-dashoffset: 100; filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 14px currentColor) drop-shadow(0 0 24px currentColor); animation: luminaShimmer 2.6s linear infinite, luminaGlowPulse .72s ease-in-out infinite; }
+                            .luminaFlowDot { filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 14px currentColor); opacity: 1; }
+                            .luminaFlowDotHalo { opacity: .28; filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 22px currentColor); }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
                             .luminaFlowShimmer.reverse3 { animation-delay: -.56s, 0s; }
                             .luminaFlowShimmer.reverse4 { animation-delay: -.84s, 0s; }
@@ -642,13 +642,13 @@ slots:
                           d: "=(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 L 520 305 L 620 270' : 'M 620 270 L 520 305 L 504 300'"
                           class: luminaFlowBase
                           fill: none
-                          stroke: "#00f9f9"
+                          stroke: "#7A5CFF"
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 L 520 305 L 620 270' : 'M 620 270 L 520 305 L 504 300'"
                           class: luminaFlowShimmer
                           fill: none
-                          stroke: "#00f9f9"
+                          stroke: "#7A5CFF"
                           pathLength: 100
                         slots:
                           default:
@@ -663,7 +663,7 @@ slots:
                         config:
                           r: 7
                           class: luminaFlowDotHalo
-                          fill: "#00f9f9"
+                          fill: "#7A5CFF"
                         slots:
                           default:
                             - component: animateMotion
@@ -677,7 +677,7 @@ slots:
                         config:
                           r: 3.2
                           class: luminaFlowDot
-                          fill: "#00f9f9"
+                          fill: "#7A5CFF"
                         slots:
                           default:
                             - component: animateMotion
@@ -698,13 +698,13 @@ slots:
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 L 630 350 L 720 310' : 'M 720 310 L 630 350 L 495 306'"
                           class: luminaFlowBase
                           fill: none
-                          stroke: "#00f9f9"
+                          stroke: "#FF6B2E"
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 L 630 350 L 720 310' : 'M 720 310 L 630 350 L 495 306'"
                           class: luminaFlowShimmer
                           fill: none
-                          stroke: "#00f9f9"
+                          stroke: "#FF6B2E"
                           pathLength: 100
                         slots:
                           default:
@@ -719,7 +719,7 @@ slots:
                         config:
                           r: 7
                           class: luminaFlowDotHalo
-                          fill: "#00f9f9"
+                          fill: "#FF6B2E"
                         slots:
                           default:
                             - component: animateMotion
@@ -733,7 +733,7 @@ slots:
                         config:
                           r: 3.2
                           class: luminaFlowDot
-                          fill: "#00f9f9"
+                          fill: "#FF6B2E"
                         slots:
                           default:
                             - component: animateMotion
@@ -810,13 +810,13 @@ slots:
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0) >= 0) ? 'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
                           class: luminaFlowBase
                           fill: none
-                          stroke: "#F5F3EE"
+                          stroke: "#FF4FD8"
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0) >= 0) ? 'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
                           class: luminaFlowShimmer
                           fill: none
-                          stroke: "#F5F3EE"
+                          stroke: "#FF4FD8"
                           pathLength: 100
                         slots:
                           default:
@@ -831,7 +831,7 @@ slots:
                         config:
                           r: 7
                           class: luminaFlowDotHalo
-                          fill: "#F5F3EE"
+                          fill: "#FF4FD8"
                         slots:
                           default:
                             - component: animateMotion
@@ -845,7 +845,7 @@ slots:
                         config:
                           r: 3.2
                           class: luminaFlowDot
-                          fill: "#F5F3EE"
+                          fill: "#FF4FD8"
                         slots:
                           default:
                             - component: animateMotion
@@ -913,7 +913,7 @@ slots:
                           class: luminaText luminaValue
                           x: 0
                           y: 20
-                          fill: "#00FFFF"
+                          fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
                           text: "=items[props.batteryPowerItem] ? items[props.batteryPowerItem].displayState || items[props.batteryPowerItem].state : ''"
 
                 - component: text
@@ -931,7 +931,7 @@ slots:
                     x: 328
                     y: 66
                     transform: translate(328, 66) rotate(10) skewX(-20) skewY(3) translate(-328, -66)
-                    fill: "#F5F3EE"
+                    fill: "#FF4FD8"
                     text: "=items[props.temperatureItem] ? items[props.temperatureItem].displayState || items[props.temperatureItem].state : ''"
                     visible: "=items[props.temperatureItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -949,7 +949,7 @@ slots:
                     x: 282
                     y: 208
                     transform: translate(282, 208) rotate(-36) skewX(-30) skewY(37) translate(-282, -208)
-                    fill: "#F5F3EE"
+                    fill: "#FF4FD8"
                     text: "=items[props.heatPumpPowerItem] ? items[props.heatPumpPowerItem].displayState || items[props.heatPumpPowerItem].state : ''"
                     visible: "=items[props.showHeatPumpItem] && items[props.showHeatPumpItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -976,7 +976,7 @@ slots:
                     x: 603
                     y: 264
                     transform: translate(603, 264) rotate(16) skewX(20) skewY(0) translate(-603, -264)
-                    fill: "#F5F3EE"
+                    fill: "#FF4FD8"
                     text: EV
                     visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -985,7 +985,7 @@ slots:
                     x: 597
                     y: 279
                     transform: translate(597, 279) rotate(16) skewX(20) skewY(0) translate(-597, -279)
-                    fill: "#F5F3EE"
+                    fill: "#7A5CFF"
                     text: "=items[props.evPowerItem] ? items[props.evPowerItem].displayState || items[props.evPowerItem].state : ''"
                     visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -994,7 +994,7 @@ slots:
                     x: 595
                     y: 295
                     transform: translate(595, 295) rotate(16) skewX(20) skewY(0) translate(-595, -295)
-                    fill: "#F5F3EE"
+                    fill: "#FF4FD8"
                     text: "=items[props.evSocItem] ? (Math.round((Number.parseFloat(items[props.evSocItem].state) <= 1 ? Number.parseFloat(items[props.evSocItem].state) * 100 : Number.parseFloat(items[props.evSocItem].state))) + ' %') : ''"
                     visible: "=items[props.showEVItem] && items[props.showEVItem].state === 'ON' && items[props.evSocItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -1003,7 +1003,7 @@ slots:
                     x: 720
                     y: 295
                     transform: translate(720, 295) rotate(14) skewX(20) skewY(0) translate(-720, -295)
-                    fill: "#F5F3EE"
+                    fill: "#FF4FD8"
                     text: EV2
                     visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -1012,7 +1012,7 @@ slots:
                     x: 720
                     y: 313
                     transform: translate(720, 313) rotate(14) skewX(20) skewY(0) translate(-720, -313)
-                    fill: "#F5F3EE"
+                    fill: "#FF6B2E"
                     text: "=items[props.ev2PowerItem] ? items[props.ev2PowerItem].displayState || items[props.ev2PowerItem].state : ''"
                     visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
                 - component: text
@@ -1021,7 +1021,7 @@ slots:
                     x: 718
                     y: 330
                     transform: translate(718, 330) rotate(16) skewX(20) skewY(0) translate(-718, -330)
-                    fill: "#F5F3EE"
+                    fill: "#FF4FD8"
                     text: "=items[props.ev2SocItem] ? (Math.round((Number.parseFloat(items[props.ev2SocItem].state) <= 1 ? Number.parseFloat(items[props.ev2SocItem].state) * 100 : Number.parseFloat(items[props.ev2SocItem].state))) + ' %') : ''"
                     visible: "=items[props.showEV2Item] && items[props.showEV2Item].state === 'ON' && items[props.ev2SocItem] && !(items[props.textVisibilityItem] && items[props.textVisibilityItem].state === 'OFF')"
 
@@ -1038,7 +1038,7 @@ slots:
                 top: 10.0000%
                 transform: translate(-50%, -50%) rotate(-9.3deg) scale(1, 1) skew(-13deg, 1deg)
                 transformOrigin: center center
-                color: "#D7F8FF"
+                color: "#FF6B2E"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: "clamp(11px, 1.85vw, 24px)"
                 fontWeight: 800
@@ -1164,7 +1164,7 @@ slots:
                 top: 78.2222%
                 transform: translate(-50%, -50%) rotate(-25deg) scale(1, 1.05) skew(-30deg, 5deg)
                 transformOrigin: center center
-                color: "#00FFFF"
+                color: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
@@ -1290,7 +1290,7 @@ slots:
                 top: 43.5000%
                 transform: translate(-50%, -50%) rotate(18deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
-                color: "#F5F3EE"
+                color: "#FF4FD8"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
@@ -1353,7 +1353,7 @@ slots:
                 top: 63.0000%
                 transform: translate(-50%, -50%) rotate(16deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
-                color: "#F5F3EE"
+                color: "#7A5CFF"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
@@ -1416,7 +1416,7 @@ slots:
                 top: 70.0000%
                 transform: translate(-50%, -50%) rotate(14deg) scale(1, 1) skew(20deg, 0deg)
                 transformOrigin: center center
-                color: "#F5F3EE"
+                color: "#FF6B2E"
                 fontFamily: "Exo 2, Orbitron, system-ui, sans-serif"
                 fontSize: "clamp(8.5px, 1.35vw, 18px)"
                 fontWeight: 800
