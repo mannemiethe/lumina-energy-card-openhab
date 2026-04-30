@@ -267,26 +267,6 @@ slots:
                 - component: defs
                   slots:
                     default:
-                      - component: radialGradient
-                        config:
-                          id: luminaPulseGradient
-                        slots:
-                          default:
-                            - component: stop
-                              config:
-                                offset: 0
-                                style:
-                                  stop-color: white
-                            - component: stop
-                              config:
-                                offset: 0.58
-                                style:
-                                  stop-color: white
-                            - component: stop
-                              config:
-                                offset: 1
-                                style:
-                                  stop-color: black
                       - component: style
                         config:
                           stylesheet: >
@@ -317,20 +297,18 @@ slots:
 
                             .luminaFlowBase { fill: none !important;
                             stroke-width: 2; stroke-linecap: round;
-                            stroke-linejoin: round; stroke-opacity: .06; filter:
+                            stroke-linejoin: round; stroke-opacity: .20; filter:
                             drop-shadow(0 0 3px currentColor); }
 
-                            .luminaFlowShimmer { fill: none !important;
-                            stroke-width: 18; stroke-linecap: round;
-                            stroke-linejoin: round; stroke-dasharray: none;
-                            stroke-dashoffset: 0; opacity: 1; filter:
-                            drop-shadow(0 0 5px currentColor) drop-shadow(0 0
-                            16px currentColor) drop-shadow(0 0 34px
-                            currentColor); }
+                            .luminaFlowShimmer { display: none; }
 
-                            .luminaFlowDot { display: none; }
+                            .luminaFlowDot { fill: none !important; opacity: 1;
+                            filter: drop-shadow(0 0 6px currentColor)
+                            drop-shadow(0 0 16px currentColor); }
 
-                            .luminaFlowDotHalo { display: none; }
+                            .luminaFlowDotHalo { fill: none !important; opacity:
+                            .45; filter: drop-shadow(0 0 10px currentColor)
+                            drop-shadow(0 0 24px currentColor); }
 
                             .luminaFlowShimmer.reverse2 { animation-delay:
                             -.28s, 0s; }
@@ -365,55 +343,6 @@ slots:
                       === 'OFF')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask1
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                                        items[props.pvPowerItem].state) || 0) >=
-                                        0) ? 'M 270 232 L 410 275' : 'M 410 275
-                                        L 270 232'"
-                                      begin: 0s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
-                                        items[props.pvPowerItem].state) || 0)),
-                                        12000) / 12000 * 2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                                        items[props.pvPowerItem].state) || 0) >=
-                                        0) ? 'M 270 232 L 410 275' : 'M 410 275
-                                        L 270 232'"
-                                      begin: 0s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
-                                        items[props.pvPowerItem].state) || 0)),
-                                        12000) / 12000 * 2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
@@ -431,7 +360,58 @@ slots:
                           fill: none
                           stroke: "#00FFFF"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask1)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#00FFFF"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
+                            items[props.pvPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            !(items[props.showPVItem] &&
+                            items[props.showPVItem].state === 'OFF')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.pvPowerItem] &&
+                                  items[props.pvPowerItem].state) || 0) >= 0) ?
+                                  'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
+                                  items[props.pvPowerItem].state) || 0)), 12000)
+                                  / 12000 * 2.45).toFixed(2) + 's'
+                                begin: 0s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#00FFFF"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
+                            items[props.pvPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            !(items[props.showPVItem] &&
+                            items[props.showPVItem].state === 'OFF')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.pvPowerItem] &&
+                                  items[props.pvPowerItem].state) || 0) >= 0) ?
+                                  'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
+                                  items[props.pvPowerItem].state) || 0)), 12000)
+                                  / 12000 * 2.45).toFixed(2) + 's'
+                                begin: 0s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -440,57 +420,6 @@ slots:
                       Number(props.flowThreshold || 30)
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask2
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.windPowerItem] &&
-                                        items[props.windPowerItem].state) || 0)
-                                        >= 0) ? 'M 275 226 L 415 270' : 'M 415
-                                        270 L 275 226'"
-                                      begin: -.35s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] &&
-                                        items[props.windPowerItem].state) ||
-                                        0)), 12000) / 12000 * 2.45).toFixed(2) +
-                                        's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.windPowerItem] &&
-                                        items[props.windPowerItem].state) || 0)
-                                        >= 0) ? 'M 275 226 L 415 270' : 'M 415
-                                        270 L 275 226'"
-                                      begin: -.35s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] &&
-                                        items[props.windPowerItem].state) ||
-                                        0)), 12000) / 12000 * 2.45).toFixed(2) +
-                                        's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
@@ -508,7 +437,56 @@ slots:
                           fill: none
                           stroke: "#0080ff"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask2)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#0080ff"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.windPowerItem] &&
+                            items[props.windPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.windPowerItem] &&
+                                  items[props.windPowerItem].state) || 0) >= 0)
+                                  ? 'M 275 226 L 415 270' : 'M 415 270 L 275
+                                  226'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] &&
+                                  items[props.windPowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -.35s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#0080ff"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.windPowerItem] &&
+                            items[props.windPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.windPowerItem] &&
+                                  items[props.windPowerItem].state) || 0) >= 0)
+                                  ? 'M 275 226 L 415 270' : 'M 415 270 L 275
+                                  226'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] &&
+                                  items[props.windPowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -.35s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -518,57 +496,6 @@ slots:
                       items[props.showBatteryItem].state === 'OFF')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask3
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.batteryPowerItem] &&
-                                        items[props.batteryPowerItem].state) ||
-                                        0) >= 0) ? 'M 416 292 L 353 314' : 'M
-                                        353 314 L 416 292'"
-                                      begin: -.7s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem]
-                                        && items[props.batteryPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.batteryPowerItem] &&
-                                        items[props.batteryPowerItem].state) ||
-                                        0) >= 0) ? 'M 416 292 L 353 314' : 'M
-                                        353 314 L 416 292'"
-                                      begin: -.7s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem]
-                                        && items[props.batteryPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.batteryPowerItem] &&
@@ -593,7 +520,60 @@ slots:
                           visible: =Math.abs(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0)) >=
                             Number(props.flowThreshold || 30)
-                          mask: url(#luminaFlowPulseMask3)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.batteryPowerItem] &&
+                            items[props.batteryPowerItem].state) || 0) >= 0) ?
+                            '#2ECC71' : '#F1C40F'"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.batteryPowerItem] &&
+                            items[props.batteryPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.batteryPowerItem] &&
+                                  items[props.batteryPowerItem].state) || 0) >=
+                                  0) ? 'M 416 292 L 353 314' : 'M 353 314 L 416
+                                  292'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem]
+                                  && items[props.batteryPowerItem].state) ||
+                                  0)), 12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -.7s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.batteryPowerItem] &&
+                            items[props.batteryPowerItem].state) || 0) >= 0) ?
+                            '#2ECC71' : '#F1C40F'"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.batteryPowerItem] &&
+                            items[props.batteryPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.batteryPowerItem] &&
+                                  items[props.batteryPowerItem].state) || 0) >=
+                                  0) ? 'M 416 292 L 353 314' : 'M 353 314 L 416
+                                  292'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem]
+                                  && items[props.batteryPowerItem].state) ||
+                                  0)), 12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -.7s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -602,63 +582,6 @@ slots:
                       items[props.homeInverterPowerItem].state !== 'UNDEF'
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask4
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
-                                        items[props.homeInverterPowerItem].stat\
-                                        e) || 0) >= 0) ? 'M 480 263 L 566 235 L
-                                        475 210' : 'M 475 210 L 566 235 L 480
-                                        263'"
-                                      begin: -1.05s
-                                      calcMode: linear
-                                      dur: =(2.8 -
-                                        Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem]
-                                        &&
-                                        items[props.homeInverterPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
-                                        items[props.homeInverterPowerItem].stat\
-                                        e) || 0) >= 0) ? 'M 480 263 L 566 235 L
-                                        475 210' : 'M 475 210 L 566 235 L 480
-                                        263'"
-                                      begin: -1.05s
-                                      calcMode: linear
-                                      dur: =(2.8 -
-                                        Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem]
-                                        &&
-                                        items[props.homeInverterPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
@@ -681,7 +604,60 @@ slots:
                           visible: =Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0)) >=
                             Number(props.flowThreshold || 30)
-                          mask: url(#luminaFlowPulseMask4)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#00f1f2"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] &&
+                            items[props.homeInverterPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
+                                  items[props.homeInverterPowerItem].state) ||
+                                  0) >= 0) ? 'M 480 263 L 566 235 L 475 210' :
+                                  'M 475 210 L 566 235 L 480 263'"
+                                dur: =(2.8 -
+                                  Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem]
+                                  && items[props.homeInverterPowerItem].state)
+                                  || 0)), 12000) / 12000 * 2.45).toFixed(2) +
+                                  's'
+                                begin: -1.05s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#00f1f2"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] &&
+                            items[props.homeInverterPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
+                                  items[props.homeInverterPowerItem].state) ||
+                                  0) >= 0) ? 'M 480 263 L 566 235 L 475 210' :
+                                  'M 475 210 L 566 235 L 480 263'"
+                                dur: =(2.8 -
+                                  Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem]
+                                  && items[props.homeInverterPowerItem].state)
+                                  || 0)), 12000) / 12000 * 2.45).toFixed(2) +
+                                  's'
+                                begin: -1.05s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -692,57 +668,6 @@ slots:
                       items[props.showGridItem].state === 'OFF')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask5
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                                        items[props.gridPowerItem].state) || 0)
-                                        >= 0) ? 'M 616 200 L 614 233 L 503 269'
-                                        : 'M 503 269 L 614 233 L 616 200'"
-                                      begin: -1.4s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
-                                        items[props.gridPowerItem].state) ||
-                                        0)), 12000) / 12000 * 2.45).toFixed(2) +
-                                        's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                                        items[props.gridPowerItem].state) || 0)
-                                        >= 0) ? 'M 616 200 L 614 233 L 503 269'
-                                        : 'M 503 269 L 614 233 L 616 200'"
-                                      begin: -1.4s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
-                                        items[props.gridPowerItem].state) ||
-                                        0)), 12000) / 12000 * 2.45).toFixed(2) +
-                                        's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
@@ -766,7 +691,64 @@ slots:
                             items[props.gridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask5)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] &&
+                            items[props.gridPowerItem].state) || 0) >= 0) ?
+                            '#FF9F1A' : '#4DA3FF'"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
+                            items[props.gridPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            !(items[props.showGridItem] &&
+                            items[props.showGridItem].state === 'OFF')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.gridPowerItem] &&
+                                  items[props.gridPowerItem].state) || 0) >= 0)
+                                  ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269
+                                  L 614 233 L 616 200'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
+                                  items[props.gridPowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -1.4s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.gridPowerItem] &&
+                            items[props.gridPowerItem].state) || 0) >= 0) ?
+                            '#FF9F1A' : '#4DA3FF'"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
+                            items[props.gridPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            !(items[props.showGridItem] &&
+                            items[props.showGridItem].state === 'OFF')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.gridPowerItem] &&
+                                  items[props.gridPowerItem].state) || 0) >= 0)
+                                  ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269
+                                  L 614 233 L 616 200'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
+                                  items[props.gridPowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -1.4s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -776,59 +758,6 @@ slots:
                       items[props.showGridItem].state === 'OFF')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask6
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
-                                        items[props.homeGridPowerItem].state) ||
-                                        0) >= 0) ? 'M 601.4 200 L 600 220 L 508
-                                        198' : 'M 508 198 L 600 220 L 601.4
-                                        200'"
-                                      begin: -1.75s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem]
-                                        && items[props.homeGridPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
-                                        items[props.homeGridPowerItem].state) ||
-                                        0) >= 0) ? 'M 601.4 200 L 600 220 L 508
-                                        198' : 'M 508 198 L 600 220 L 601.4
-                                        200'"
-                                      begin: -1.75s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem]
-                                        && items[props.homeGridPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
@@ -855,7 +784,60 @@ slots:
                           visible: =Math.abs(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0)) >=
                             Number(props.flowThreshold || 30)
-                          mask: url(#luminaFlowPulseMask6)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
+                            items[props.homeGridPowerItem].state) || 0) >= 0) ?
+                            '#FF9F1A' : '#4DA3FF'"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.homeGridPowerItem] &&
+                            items[props.homeGridPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
+                                  items[props.homeGridPowerItem].state) || 0) >=
+                                  0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M
+                                  508 198 L 600 220 L 601.4 200'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem]
+                                  && items[props.homeGridPowerItem].state) ||
+                                  0)), 12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -1.75s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
+                            items[props.homeGridPowerItem].state) || 0) >= 0) ?
+                            '#FF9F1A' : '#4DA3FF'"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.homeGridPowerItem] &&
+                            items[props.homeGridPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30)
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
+                                  items[props.homeGridPowerItem].state) || 0) >=
+                                  0) ? 'M 601.4 200 L 600 220 L 508 198' : 'M
+                                  508 198 L 600 220 L 601.4 200'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem]
+                                  && items[props.homeGridPowerItem].state) ||
+                                  0)), 12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -1.75s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -866,55 +848,6 @@ slots:
                       === 'ON')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask7
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.evPowerItem] &&
-                                        items[props.evPowerItem].state) || 0) >=
-                                        0) ? 'M 504 300 L 520 305 L 620 270' :
-                                        'M 620 270 L 520 305 L 504 300'"
-                                      begin: -2.1s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] &&
-                                        items[props.evPowerItem].state) || 0)),
-                                        12000) / 12000 * 2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.evPowerItem] &&
-                                        items[props.evPowerItem].state) || 0) >=
-                                        0) ? 'M 504 300 L 520 305 L 620 270' :
-                                        'M 620 270 L 520 305 L 504 300'"
-                                      begin: -2.1s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] &&
-                                        items[props.evPowerItem].state) || 0)),
-                                        12000) / 12000 * 2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
@@ -934,7 +867,60 @@ slots:
                           fill: none
                           stroke: "#7A5CFF"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask7)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#7A5CFF"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.evPowerItem] &&
+                            items[props.evPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showEVItem] &&
+                            items[props.showEVItem].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.evPowerItem] &&
+                                  items[props.evPowerItem].state) || 0) >= 0) ?
+                                  'M 504 300 L 520 305 L 620 270' : 'M 620 270 L
+                                  520 305 L 504 300'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] &&
+                                  items[props.evPowerItem].state) || 0)), 12000)
+                                  / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.1s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#7A5CFF"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.evPowerItem] &&
+                            items[props.evPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showEVItem] &&
+                            items[props.showEVItem].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.evPowerItem] &&
+                                  items[props.evPowerItem].state) || 0) >= 0) ?
+                                  'M 504 300 L 520 305 L 620 270' : 'M 620 270 L
+                                  520 305 L 504 300'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] &&
+                                  items[props.evPowerItem].state) || 0)), 12000)
+                                  / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.1s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -945,55 +931,6 @@ slots:
                       items[props.showEV2Item].state === 'ON')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask8
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                                        items[props.ev2PowerItem].state) || 0)
-                                        >= 0) ? 'M 495 306 L 630 350 L 720 310'
-                                        : 'M 720 310 L 630 350 L 495 306'"
-                                      begin: -2.45s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
-                                        items[props.ev2PowerItem].state) || 0)),
-                                        12000) / 12000 * 2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                                        items[props.ev2PowerItem].state) || 0)
-                                        >= 0) ? 'M 495 306 L 630 350 L 720 310'
-                                        : 'M 720 310 L 630 350 L 495 306'"
-                                      begin: -2.45s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
-                                        items[props.ev2PowerItem].state) || 0)),
-                                        12000) / 12000 * 2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
@@ -1013,7 +950,60 @@ slots:
                           fill: none
                           stroke: "#FF6B2E"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask8)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#FF6B2E"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
+                            items[props.ev2PowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showEV2Item] &&
+                            items[props.showEV2Item].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.ev2PowerItem] &&
+                                  items[props.ev2PowerItem].state) || 0) >= 0) ?
+                                  'M 495 306 L 630 350 L 720 310' : 'M 720 310 L
+                                  630 350 L 495 306'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
+                                  items[props.ev2PowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.45s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#FF6B2E"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
+                            items[props.ev2PowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showEV2Item] &&
+                            items[props.showEV2Item].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.ev2PowerItem] &&
+                                  items[props.ev2PowerItem].state) || 0) >= 0) ?
+                                  'M 495 306 L 630 350 L 720 310' : 'M 720 310 L
+                                  630 350 L 495 306'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
+                                  items[props.ev2PowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.45s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -1024,57 +1014,6 @@ slots:
                       items[props.showPoolItem].state === 'ON')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask9
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                                        items[props.poolPowerItem].state) || 0)
-                                        >= 0) ? 'M 480 308 L 590 348 L 510 388'
-                                        : 'M 510 388 L 590 348 L 480 308'"
-                                      begin: -2.65s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
-                                        items[props.poolPowerItem].state) ||
-                                        0)), 12000) / 12000 * 2.45).toFixed(2) +
-                                        's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                                        items[props.poolPowerItem].state) || 0)
-                                        >= 0) ? 'M 480 308 L 590 348 L 510 388'
-                                        : 'M 510 388 L 590 348 L 480 308'"
-                                      begin: -2.65s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
-                                        items[props.poolPowerItem].state) ||
-                                        0)), 12000) / 12000 * 2.45).toFixed(2) +
-                                        's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
@@ -1094,7 +1033,60 @@ slots:
                           fill: none
                           stroke: "#44FFE3"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask9)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#44FFE3"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
+                            items[props.poolPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showPoolItem] &&
+                            items[props.showPoolItem].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.poolPowerItem] &&
+                                  items[props.poolPowerItem].state) || 0) >= 0)
+                                  ? 'M 480 308 L 590 348 L 510 388' : 'M 510 388
+                                  L 590 348 L 480 308'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
+                                  items[props.poolPowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.65s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#44FFE3"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
+                            items[props.poolPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showPoolItem] &&
+                            items[props.showPoolItem].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.poolPowerItem] &&
+                                  items[props.poolPowerItem].state) || 0) >= 0)
+                                  ? 'M 480 308 L 590 348 L 510 388' : 'M 510 388
+                                  L 590 348 L 480 308'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
+                                  items[props.poolPowerItem].state) || 0)),
+                                  12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.65s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: g
                   config:
                     class: luminaFlowGroup
@@ -1105,57 +1097,6 @@ slots:
                       items[props.showHeatPumpItem].state === 'ON')
                   slots:
                     default:
-                      - component: mask
-                        config:
-                          id: luminaFlowPulseMask10
-                          maskUnits: userSpaceOnUse
-                          maskContentUnits: userSpaceOnUse
-                          x: 0
-                          y: 0
-                          width: 800
-                          height: 450
-                        slots:
-                          default:
-                            - component: circle
-                              config:
-                                r: 260
-                                fill: url(#luminaPulseGradient)
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
-                                        items[props.heatPumpPowerItem].state) ||
-                                        0) >= 0) ? 'M 410 226 L 363 237' : 'M
-                                        363 237 L 410 226'"
-                                      begin: -2.8s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem]
-                                        && items[props.heatPumpPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
-                            - component: circle
-                              config:
-                                r: 150
-                                fill: white
-                              slots:
-                                default:
-                                  - component: animateMotion
-                                    config:
-                                      path: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
-                                        items[props.heatPumpPowerItem].state) ||
-                                        0) >= 0) ? 'M 410 226 L 363 237' : 'M
-                                        363 237 L 410 226'"
-                                      begin: -2.8s
-                                      calcMode: linear
-                                      dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem]
-                                        && items[props.heatPumpPowerItem].state)
-                                        || 0)), 12000) / 12000 *
-                                        2.45).toFixed(2) + 's'
-                                      repeatCount: indefinite
-                                      rotate: auto
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
@@ -1173,7 +1114,60 @@ slots:
                           fill: none
                           stroke: "#FF4FD8"
                           pathLength: 100
-                          mask: url(#luminaFlowPulseMask10)
+                      - component: path
+                        config:
+                          d: M -24 0 L 24 0
+                          class: luminaFlowDotHalo
+                          fill: none
+                          stroke: "#FF4FD8"
+                          stroke-width: 5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] &&
+                            items[props.heatPumpPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showHeatPumpItem] &&
+                            items[props.showHeatPumpItem].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
+                                  items[props.heatPumpPowerItem].state) || 0) >=
+                                  0) ? 'M 410 226 L 363 237' : 'M 363 237 L 410
+                                  226'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem]
+                                  && items[props.heatPumpPowerItem].state) ||
+                                  0)), 12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.8s
+                                repeatCount: indefinite
+                                rotate: auto
+                      - component: path
+                        config:
+                          d: M -15 0 L 15 0
+                          class: luminaFlowDot
+                          fill: none
+                          stroke: "#FF4FD8"
+                          stroke-width: 2.5
+                          stroke-linecap: round
+                          visible: =Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] &&
+                            items[props.heatPumpPowerItem].state) || 0)) >=
+                            Number(props.flowThreshold || 30) &&
+                            (items[props.showHeatPumpItem] &&
+                            items[props.showHeatPumpItem].state === 'ON')
+                        slots:
+                          default:
+                            - component: animateMotion
+                              config:
+                                path: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
+                                  items[props.heatPumpPowerItem].state) || 0) >=
+                                  0) ? 'M 410 226 L 363 237' : 'M 363 237 L 410
+                                  226'"
+                                dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem]
+                                  && items[props.heatPumpPowerItem].state) ||
+                                  0)), 12000) / 12000 * 2.45).toFixed(2) + 's'
+                                begin: -2.8s
+                                repeatCount: indefinite
+                                rotate: auto
                 - component: text
                   config:
                     class: luminaText luminaValue
