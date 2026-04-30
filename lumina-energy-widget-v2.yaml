@@ -268,14 +268,15 @@ slots:
                         config:
                           stylesheet: |
                             @keyframes luminaShimmer { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
-                            @keyframes luminaGlowPulse { 0%,100% { opacity: .68; } 45% { opacity: 1; } 55% { opacity: .92; } }
+                            @keyframes luminaGlowPulse { 0%,100% { opacity: .62; } 45% { opacity: 1; } 55% { opacity: .88; } }
+                            @keyframes luminaPulseFlash { 0%,100% { opacity: .42; transform: scaleX(.58) scaleY(.76); } 45% { opacity: 1; transform: scaleX(1.18) scaleY(1.08); } 70% { opacity: .72; transform: scaleX(.86) scaleY(.92); } }
                             .luminaText { display: none; font-family: 'Exo 2', Orbitron, sans-serif; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; text-anchor: middle; dominant-baseline: central; paint-order: stroke; stroke: rgba(0,15,25,.45); stroke-width: 2px; text-shadow: 0 0 4px rgba(245,243,238,.6), 0 0 14px currentColor; }
                             .luminaSmall { font-size: 12px; letter-spacing: 1px; }
                             .luminaValue { font-size: 12px; }
                             .luminaFlowBase { fill: none !important; stroke-width: 2.2; stroke-linecap: square; stroke-linejoin: round; stroke-opacity: .32; filter: drop-shadow(0 0 3px currentColor) drop-shadow(0 0 12px currentColor); }
                             .luminaFlowShimmer { fill: none !important; stroke-width: 5.2; stroke-linecap: square; stroke-linejoin: round; stroke-dasharray: 10 34 2 54; stroke-dashoffset: 100; filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 14px currentColor) drop-shadow(0 0 24px currentColor); animation: luminaShimmer 2.6s linear infinite, luminaGlowPulse .72s ease-in-out infinite; }
-                            .luminaFlowDot { filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 14px currentColor); opacity: 1; shape-rendering: crispEdges; }
-                            .luminaFlowDotHalo { opacity: .28; filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 22px currentColor); shape-rendering: crispEdges; }
+                            .luminaFlowDot { filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor) drop-shadow(0 0 30px currentColor); opacity: 1; shape-rendering: crispEdges; transform-box: fill-box; transform-origin: center; animation: luminaPulseFlash .62s ease-in-out infinite; }
+                            .luminaFlowDotHalo { opacity: .34; filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 30px currentColor) drop-shadow(0 0 48px currentColor); shape-rendering: crispEdges; transform-box: fill-box; transform-origin: center; animation: luminaPulseFlash .62s ease-in-out infinite; }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
                             .luminaFlowShimmer.reverse3 { animation-delay: -.56s, 0s; }
                             .luminaFlowShimmer.reverse4 { animation-delay: -.84s, 0s; }
@@ -316,10 +317,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#00FFFF"
@@ -334,10 +335,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#00FFFF"
@@ -380,10 +381,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#0080ff"
@@ -398,10 +399,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#0080ff"
@@ -445,10 +446,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
@@ -464,10 +465,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
@@ -512,10 +513,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#00f1f2"
@@ -531,10 +532,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#00f1f2"
@@ -578,10 +579,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
@@ -596,10 +597,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
@@ -643,10 +644,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
@@ -662,10 +663,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
@@ -709,10 +710,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#7A5CFF"
@@ -727,10 +728,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#7A5CFF"
@@ -773,10 +774,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#FF6B2E"
@@ -791,10 +792,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#FF6B2E"
@@ -837,10 +838,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#44FFE3"
@@ -855,10 +856,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#44FFE3"
@@ -901,10 +902,10 @@ slots:
                                 repeatCount: indefinite
                       - component: rect
                         config:
-                          x: -14
-                          y: -4
-                          width: 28
-                          height: 8
+                          x: -24
+                          y: -5.5
+                          width: 48
+                          height: 11
                           rx: 0
                           class: luminaFlowDotHalo
                           fill: "#FF4FD8"
@@ -919,10 +920,10 @@ slots:
                                 rotate: auto
                       - component: rect
                         config:
-                          x: -9
-                          y: -2.5
-                          width: 18
-                          height: 5
+                          x: -16
+                          y: -3
+                          width: 32
+                          height: 6
                           rx: 0
                           class: luminaFlowDot
                           fill: "#FF4FD8"
