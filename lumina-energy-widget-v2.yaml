@@ -274,7 +274,7 @@ slots:
                             .luminaSmall { font-size: 12px; letter-spacing: 1px; }
                             .luminaValue { font-size: 12px; }
                             .luminaFlowBase { fill: none !important; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-opacity: .14; filter: drop-shadow(0 0 3px currentColor); }
-                            .luminaFlowShimmer { fill: none !important; stroke-width: 6.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 42 88; stroke-dashoffset: 100; opacity: 1; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor) drop-shadow(0 0 32px currentColor); animation: luminaGlowPulse .5s ease-in-out infinite; }
+                            .luminaFlowShimmer { fill: none !important; stroke-width: 4.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 42 88; stroke-dashoffset: 100; opacity: 1; filter: drop-shadow(0 0 6px currentColor) drop-shadow(0 0 16px currentColor) drop-shadow(0 0 32px currentColor); animation: luminaGlowPulse .5s ease-in-out infinite; }
                             .luminaFlowDot { fill: none !important; opacity: 1; filter: drop-shadow(0 0 7px currentColor) drop-shadow(0 0 18px currentColor); }
                             .luminaFlowDotHalo { fill: none !important; opacity: .45; filter: drop-shadow(0 0 14px currentColor) drop-shadow(0 0 34px currentColor) drop-shadow(0 0 58px currentColor); }
                             .luminaFlowShimmer.reverse2 { animation-delay: -.28s, 0s; }
@@ -317,11 +317,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#00FFFF"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -335,11 +335,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#00FFFF"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.pvPowerItem] && items[props.pvPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -381,11 +381,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#0080ff"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.windPowerItem] && items[props.windPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -399,11 +399,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#0080ff"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.windPowerItem] && items[props.windPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -446,11 +446,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -464,11 +464,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0) >= 0) ? '#2ECC71' : '#F1C40F'"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.batteryPowerItem] && items[props.batteryPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -511,11 +511,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#00f1f2"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -529,11 +529,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#00f1f2"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.homeInverterPowerItem] && items[props.homeInverterPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -575,11 +575,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -593,11 +593,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.gridPowerItem] && items[props.gridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -640,11 +640,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -658,11 +658,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0) >= 0) ? '#FF9F1A' : '#4DA3FF'"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.homeGridPowerItem] && items[props.homeGridPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -704,11 +704,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#7A5CFF"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -722,11 +722,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#7A5CFF"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.evPowerItem] && items[props.evPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -768,11 +768,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#FF6B2E"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -786,11 +786,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#FF6B2E"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.ev2PowerItem] && items[props.ev2PowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -832,11 +832,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#44FFE3"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.poolPowerItem] && items[props.poolPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -850,11 +850,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#44FFE3"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.poolPowerItem] && items[props.poolPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -896,11 +896,11 @@ slots:
                                 repeatCount: indefinite
                       - component: path
                         config:
-                          d: "M -26 0 L 26 0"
+                          d: "M -12 0 L 12 0"
                           class: luminaFlowDotHalo
                           fill: none
                           stroke: "#FF4FD8"
-                          stroke-width: 9
+                          stroke-width: 5.5
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
@@ -914,11 +914,11 @@ slots:
                                 rotate: auto
                       - component: path
                         config:
-                          d: "M -15 0 L 15 0"
+                          d: "M -7 0 L 7 0"
                           class: luminaFlowDot
                           fill: none
                           stroke: "#FF4FD8"
-                          stroke-width: 4.5
+                          stroke-width: 2.8
                           stroke-linecap: round
                           visible: "=Math.abs(Number.parseFloat((items[props.heatPumpPowerItem] && items[props.heatPumpPowerItem].state) || 0)) >= Number(props.flowThreshold || 30)"
                         slots:
