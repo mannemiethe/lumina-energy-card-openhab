@@ -363,8 +363,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath1
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270
-                            232 L 410 275' : 'M 410 275 L 270 232'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 C 315 242 365 258 410 275' : 'M 410 275 C 365 258 315 242 270 232'"
                           fill: none
                       - component: mask
                         config:
@@ -413,8 +412,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath2
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M
-                            275 226 L 415 270' : 'M 415 270 L 275 226'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 C 318 237 370 253 415 270' : 'M 415 270 C 370 253 318 237 275 226'"
                           fill: none
                       - component: mask
                         config:
@@ -466,7 +464,7 @@ slots:
                           id: luminaFlowMotionPath3
                           d: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
-                            'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                            'M 416 292 C 396 298 374 306 353 314' : 'M 353 314 C 374 306 396 298 416 292'"
                           fill: none
                       - component: mask
                         config:
@@ -518,8 +516,7 @@ slots:
                           id: luminaFlowMotionPath4
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0) >=
-                            0) ? 'M 505 270 L 566 235 L 450 203' : 'M 450 203 L
-                            566 235 L 505 270'"
+                            0) ? 'M 500 266 C 522 258 548 245 566 235 C 540 228 505 218 475 210' : 'M 475 210 C 505 218 540 228 566 235 C 548 245 522 258 500 266'"
                           fill: none
                       - component: mask
                         config:
@@ -574,9 +571,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath5
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M
-                            616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233
-                            L 616 200'"
+                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 C 616 214 610 225 596 232 C 568 244 532 256 503 269' : 'M 503 269 C 532 256 568 244 596 232 C 610 225 616 214 616 200'"
                           fill: none
                       - component: mask
                         config:
@@ -628,8 +623,7 @@ slots:
                           id: luminaFlowMotionPath6
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
-                            'M 602.8 180 L 600 220 L 486 193' : 'M 486 193 L 600
-                            220 L 602.8 180'"
+                            'M 602 190 C 604 204 600 216 590 220 C 562 214 532 206 508 198' : 'M 508 198 C 532 206 562 214 590 220 C 600 216 604 204 602 190'"
                           fill: none
                       - component: mask
                         config:
@@ -680,9 +674,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath7
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
-                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 482
-                            293 L 520 305 L 642 262' : 'M 642 262 L 520 305 L
-                            482 293'"
+                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 C 510 306 518 309 526 304 C 555 292 590 280 620 270' : 'M 620 270 C 590 280 555 292 526 304 C 518 309 510 306 504 300'"
                           fill: none
                       - component: mask
                         config:
@@ -731,9 +723,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath8
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M
-                            495 306 L 630 350 L 720 310' : 'M 720 310 L 630 350
-                            L 495 306'"
+                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 C 540 322 590 338 630 350 C 656 342 692 324 720 310' : 'M 720 310 C 692 324 656 342 630 350 C 590 338 540 322 495 306'"
                           fill: none
                       - component: mask
                         config:
@@ -782,9 +772,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath9
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M
-                            455 299 L 590 348 L 486 400' : 'M 486 400 L 590 348
-                            L 455 299'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 C 520 322 564 340 590 348 C 562 366 532 382 510 388' : 'M 510 388 C 532 382 562 366 590 348 C 564 340 520 322 480 308'"
                           fill: none
                       - component: mask
                         config:
@@ -836,7 +824,7 @@ slots:
                           id: luminaFlowMotionPath10
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
                             items[props.heatPumpPowerItem].state) || 0) >= 0) ?
-                            'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
+                            'M 410 226 C 395 229 378 233 363 237' : 'M 363 237 C 378 233 395 229 410 226'"
                           fill: none
                       - component: mask
                         config:
@@ -896,8 +884,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270
-                            232 L 410 275' : 'M 410 275 L 270 232'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 C 315 242 365 258 410 275' : 'M 410 275 C 365 258 315 242 270 232'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -905,8 +892,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270
-                            232 L 410 275' : 'M 410 275 L 270 232'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 C 315 242 365 258 410 275' : 'M 410 275 C 365 258 315 242 270 232'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -923,8 +909,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M
-                            275 226 L 415 270' : 'M 415 270 L 275 226'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 C 318 237 370 253 415 270' : 'M 415 270 C 370 253 318 237 275 226'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -932,8 +917,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M
-                            275 226 L 415 270' : 'M 415 270 L 275 226'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 C 318 237 370 253 415 270' : 'M 415 270 C 370 253 318 237 275 226'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -952,7 +936,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
-                            'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                            'M 416 292 C 396 298 374 306 353 314' : 'M 353 314 C 374 306 396 298 416 292'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -963,7 +947,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
-                            'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                            'M 416 292 C 396 298 374 306 353 314' : 'M 353 314 C 374 306 396 298 416 292'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -986,8 +970,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0) >=
-                            0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L
-                            566 235 L 480 263'"
+                            0) ? 'M 500 266 C 522 258 548 245 566 235 C 540 228 505 218 475 210' : 'M 475 210 C 505 218 540 228 566 235 C 548 245 522 258 500 266'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -996,8 +979,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0) >=
-                            0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L
-                            566 235 L 480 263'"
+                            0) ? 'M 500 266 C 522 258 548 245 566 235 C 540 228 505 218 475 210' : 'M 475 210 C 505 218 540 228 566 235 C 548 245 522 258 500 266'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1019,9 +1001,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M
-                            616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233
-                            L 616 200'"
+                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 C 616 214 610 225 596 232 C 568 244 532 256 503 269' : 'M 503 269 C 532 256 568 244 596 232 C 610 225 616 214 616 200'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1031,9 +1011,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M
-                            616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233
-                            L 616 200'"
+                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 C 616 214 610 225 596 232 C 568 244 532 256 503 269' : 'M 503 269 C 532 256 568 244 596 232 C 610 225 616 214 616 200'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1054,8 +1032,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
-                            'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600
-                            220 L 601.4 200'"
+                            'M 602 190 C 604 204 600 216 590 220 C 562 214 532 206 508 198' : 'M 508 198 C 532 206 562 214 590 220 C 600 216 604 204 602 190'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1066,8 +1043,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
-                            'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600
-                            220 L 601.4 200'"
+                            'M 602 190 C 604 204 600 216 590 220 C 562 214 532 206 508 198' : 'M 508 198 C 532 206 562 214 590 220 C 600 216 604 204 602 190'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1091,9 +1067,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
-                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504
-                            300 L 520 305 L 620 270' : 'M 620 270 L 520 305 L
-                            504 300'"
+                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 C 510 306 518 309 526 304 C 555 292 590 280 620 270' : 'M 620 270 C 590 280 555 292 526 304 C 518 309 510 306 504 300'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1101,9 +1075,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
-                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504
-                            300 L 520 305 L 620 270' : 'M 620 270 L 520 305 L
-                            504 300'"
+                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 C 510 306 518 309 526 304 C 555 292 590 280 620 270' : 'M 620 270 C 590 280 555 292 526 304 C 518 309 510 306 504 300'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1122,9 +1094,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M
-                            495 306 L 630 350 L 720 310' : 'M 720 310 L 630 350
-                            L 495 306'"
+                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 C 540 322 590 338 630 350 C 656 342 692 324 720 310' : 'M 720 310 C 692 324 656 342 630 350 C 590 338 540 322 495 306'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1132,9 +1102,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M
-                            495 306 L 630 350 L 720 310' : 'M 720 310 L 630 350
-                            L 495 306'"
+                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 C 540 322 590 338 630 350 C 656 342 692 324 720 310' : 'M 720 310 C 692 324 656 342 630 350 C 590 338 540 322 495 306'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1153,9 +1121,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M
-                            480 308 L 590 348 L 510 388' : 'M 510 388 L 590 348
-                            L 480 308'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 C 520 322 564 340 590 348 C 562 366 532 382 510 388' : 'M 510 388 C 532 382 562 366 590 348 C 564 340 520 322 480 308'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1163,9 +1129,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M
-                            480 308 L 590 348 L 510 388' : 'M 510 388 L 590 348
-                            L 480 308'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 C 520 322 564 340 590 348 C 562 366 532 382 510 388' : 'M 510 388 C 532 382 562 366 590 348 C 564 340 520 322 480 308'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1185,7 +1149,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
                             items[props.heatPumpPowerItem].state) || 0) >= 0) ?
-                            'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
+                            'M 410 226 C 395 229 378 233 363 237' : 'M 363 237 C 378 233 395 229 410 226'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1194,7 +1158,7 @@ slots:
                         config:
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
                             items[props.heatPumpPowerItem].state) || 0) >= 0) ?
-                            'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
+                            'M 410 226 C 395 229 378 233 363 237' : 'M 363 237 C 378 233 395 229 410 226'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
