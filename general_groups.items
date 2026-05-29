@@ -1,0 +1,37 @@
+
+Group:Number:COUNT(ON)          gLights         "Light"                             <light>
+Group:Number:COUNT(ON)          gDimmerLights   "Dimmer Lights"                     <light>
+Group:Number:COUNT(ON)          gColorLights    "Color Lights"                      <light>
+Group:Number:COUNT(ON)          gAppliances     "Appliances"                        <appliances>
+Group:Number:COUNT(ON)          gBattery        "Low Battery"                       <battery>
+Group:Number:COUNT(OPEN)        gWindows        "Open Windows"                      <window>
+Group:Number:COUNT(OPEN)        gDoors          "Open Doors"                        <door>
+Group:Number:COUNT(OPEN)        gGarageDoors    "Open Garage Doors"                 <garagedoor>
+Group:Rollershutter:AVG         gBlinds         "Open Blinds [%d %%]"               <rollershutter>                                                     {unit="%", stateDescription=""[pattern="%d %%"]}
+Group:Number:COUNT(ON)          gPresence       "Presence"                          <presence>
+Group:Number:COUNT(ON)          gSmartLocks     "Locks"                             <lock>
+Group:Number:COUNT(ON)          gClimate        "Climate"                           <climate>
+Group:Number:COUNT(ON)          gScreens        "Screens"                           <screen>
+Group:Number:COUNT(ON)          gProjectors     "Projectors"                        <projector>
+Group:Number:COUNT(ON)          gSpeakers       "Speakers"                          <speaker>
+Group:Number:Temperature:AVG    gTemperature    "Avg Temperature [%.1f %unit%]"     <temperature>                                                       {unit="°C", stateDescription=""[pattern="%.1f %unit%"]}
+Group:Number:Dimensionless:AVG  gHumidity       "Avg Humidity [%d %unit%]"          <humidity>                                                          {unit="%", stateDescription=""[pattern="%.0f %unit%"]}
+Group:Number:Dimensionless:AVG  gCO2            "Avg CO2 [%.0f %unit%]"             <carbondioxide>                                                     {unit="ppm", stateDescription=""[pattern="%.0f %unit%"]}
+Group:Number:Illuminance:AVG    gLuminance      "Avg Luminance [%.0f %unit%]"       <sun>                                                               {unit="lx", stateDescription=""[pattern="%.0f %unit%"]}
+Group:Number:AVG                gAirQuality     "Avg Air Quality [%.0f %unit%]"     <qualityofservice>                                                  {unit="AQI", stateDescription=""[pattern="%.0f %unit%"]}
+Group:Number:Dimensionless:AVG  gCO             "Avg CO [%.0f %unit%]"              <qualityofservice>                                                  {unit="ppm", stateDescription=""[pattern="%.0f %unit%"]}
+Group:Number:Energy:AVG         gEnergy         "Avg Energy [%.1f %unit%]"          <energy>                                                            {unit="kWh", stateDescription=""[pattern="%.1f %unit%"]}
+Group:Number:Energy:AVG         gIncomeEnergy   "Avg Income Energy [%.1f %unit%]"   <energy>                                                            {unit="kWh", stateDescription=""[pattern="%.1f %unit%"]}
+Group:Number:Energy:AVG         gOutcomeEnergy  "Avg Outcome Energy [%.1f %unit%]"  <energy>                                                            {unit="kWh", stateDescription=""[pattern="%.1f %unit%"]}
+Group:Number:Volume:AVG         gGasVolume      "Avg Gas Volume [%.3f %unit%]"      <gas>                                                               {unit="m³", stateDescription=""[pattern="%.3f %unit%"]}
+Group:Number:Volume:AVG         gWaterVolume    "Avg Water Volume [%.3f %unit%]"    <water>                                                             {unit="m³", stateDescription=""[pattern="%.3f %unit%"]}
+Group:Number:AVG                gWaterQuality   "Avg Water Quality [%.0f %unit%]"   <water>                                                             {unit="WQI", stateDescription=""[pattern="%.0f %unit%"]}
+Group:Number:COUNT(ON)          gSmokeAlarm     "Smokealarm"                        <smoke>
+
+
+Group                           gLocation       "Location"                          <indoor>                        [ "Location", "Group", "Locations"]
+// ── Location Hierarchy ────────────────────────────────────────────────────────
+Group                           gIndoor         "Indoor"                            <indoor>            (gLocation) ["Indoor", "Group", "Locations"]
+Group                           gOutdoor        "Outdoor"                           <garden>            (gLocation) ["Outdoor", "Group", "Locations"]
+Group                           gProperties     "Properties"                        <settings>
+// Group                   gBuildings          "Buildings"             <building>          (gIndoor)    ["Building"]       // unused
