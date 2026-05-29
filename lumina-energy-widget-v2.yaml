@@ -363,7 +363,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath1
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 241.3 223.2 L 270 232 L 410 275 L 438.7 283.8' : 'M 438.7 283.8 L 410 275 L 270 232 L 241.3 223.2'"
                           fill: none
                       - component: mask
                         config:
@@ -422,7 +422,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath2
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 L 415 270' : 'M 415 270 L 275 226'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 246.4 217 L 275 226 L 415 270 L 443.6 279' : 'M 443.6 279 L 415 270 L 275 226 L 246.4 217'"
                           fill: none
                       - component: mask
                         config:
@@ -484,7 +484,7 @@ slots:
                           id: luminaFlowMotionPath3
                           d: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
-                            'M 416 292 L 353 314' : 'M 353 314 L 416 292'"
+                            'M 444.3 282.1 L 416 292 L 353 314 L 324.7 323.9' : 'M 324.7 323.9 L 353 314 L 416 292 L 444.3 282.1'"
                           fill: none
                       - component: mask
                         config:
@@ -546,7 +546,7 @@ slots:
                           id: luminaFlowMotionPath4
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0) >=
-                            0) ? 'M 480 263 L 547 241 Q 566 235 547 230 L 475 210' : 'M 475 210 L 547 230 Q 566 235 547 241 L 480 263'"
+                            0) ? 'M 451.5 272.4 L 480 263 L 547 241 Q 566 235 547 230 L 475 210 L 446.1 202' : 'M 446.1 202 L 475 210 L 547 230 Q 566 235 547 241 L 480 263 L 451.5 272.4'"
                           fill: none
                       - component: mask
                         config:
@@ -611,7 +611,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath5
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 615 218 Q 614 233 595 239 L 503 269' : 'M 503 269 L 595 239 Q 614 233 615 218 L 616 200'"
+                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 617.7 170.1 L 616 200 L 615 218 Q 614 233 595 239 L 503 269 L 474.5 278.3' : 'M 474.5 278.3 L 503 269 L 595 239 Q 614 233 615 218 L 616 200 L 617.7 170.1'"
                           fill: none
                       - component: mask
                         config:
@@ -673,7 +673,7 @@ slots:
                           id: luminaFlowMotionPath6
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
-                            'M 601.4 200 L 600.7 210 Q 600 220 581 215 L 508 198' : 'M 508 198 L 581 215 Q 600 220 600.7 210 L 601.4 200'"
+                            'M 603.5 170.1 L 601.4 200 L 600.7 210 Q 600 220 581 215 L 508 198 L 478.8 191.2' : 'M 478.8 191.2 L 508 198 L 581 215 Q 600 220 600.7 210 L 601.4 200 L 603.5 170.1'"
                           fill: none
                       - component: mask
                         config:
@@ -734,7 +734,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath7
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
-                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 L 511 302 Q 520 305 539 298 L 620 270' : 'M 620 270 L 539 298 Q 520 305 511 302 L 504 300'"
+                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 475.2 291.8 L 504 300 L 511 302 Q 520 305 539 298 L 620 270 L 648.4 260.2' : 'M 648.4 260.2 L 620 270 L 539 298 Q 520 305 511 302 L 504 300 L 475.2 291.8'"
                           fill: none
                       - component: mask
                         config:
@@ -793,7 +793,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath8
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 L 601 341 Q 630 350 658 338 L 720 310' : 'M 720 310 L 658 338 Q 630 350 601 341 L 495 306'"
+                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 466.5 296.6 L 495 306 L 601 341 Q 630 350 658 338 L 720 310 L 747.4 297.6' : 'M 747.4 297.6 L 720 310 L 658 338 Q 630 350 601 341 L 495 306 L 466.5 296.6'"
                           fill: none
                       - component: mask
                         config:
@@ -852,7 +852,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath9
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 562 338 Q 590 348 563 361 L 510 388' : 'M 510 388 L 563 361 Q 590 348 562 338 L 480 308'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 451.8 297.7 L 480 308 L 562 338 Q 590 348 563 361 L 510 388 L 483.3 401.6' : 'M 483.3 401.6 L 510 388 L 563 361 Q 590 348 562 338 L 480 308 L 451.8 297.7'"
                           fill: none
                       - component: mask
                         config:
@@ -914,7 +914,7 @@ slots:
                           id: luminaFlowMotionPath10
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
                             items[props.heatPumpPowerItem].state) || 0) >= 0) ?
-                            'M 410 226 L 363 237' : 'M 363 237 L 410 226'"
+                            'M 439.2 219.2 L 410 226 L 363 237 L 333.8 243.8' : 'M 333.8 243.8 L 363 237 L 410 226 L 439.2 219.2'"
                           fill: none
                       - component: mask
                         config:
