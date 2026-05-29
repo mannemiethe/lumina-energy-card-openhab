@@ -8,11 +8,11 @@ props:
     - name: backgroundImage
       label: Day Background Image URL
       type: TEXT
-      default: /static/lumina/lumina_background_without_everything.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/lumina_background_without_everything.png
     - name: nightBackgroundImage
       label: Night Background Image URL
       type: TEXT
-      default: /static/lumina/lumina_background_without_everything.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/lumina_background_without_everything.png
     - name: nightModeItem
       label: Night Mode Item
       type: TEXT
@@ -152,39 +152,39 @@ props:
     - name: oldHouseOverlayImage
       label: Old House Overlay Image URL
       type: TEXT
-      default: /static/lumina/oldhouse.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/oldhouse.png
     - name: newHouseOverlayImage
       label: New House Overlay Image URL
       type: TEXT
-      default: /static/lumina/newhouse.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/newhouse.png
     - name: customHouseOverlayImage
       label: Custom House Overlay Image URL
       type: TEXT
-      default: /static/lumina/oldhouse.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/oldhouse.png
     - name: solarOverlayImage
       label: Solar Overlay Image URL
       type: TEXT
-      default: /static/lumina/solar.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/solar.png
     - name: gridConnectorOverlayImage
       label: Grid Connector Overlay Image URL
       type: TEXT
-      default: /static/lumina/grid-connector.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/grid-connector.png
     - name: inverterOverlayImage
       label: Inverter Overlay Image URL
       type: TEXT
-      default: /static/lumina/inverter.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/inverter.png
     - name: batteryOverlayImage
       label: Battery Overlay Image URL
       type: TEXT
-      default: /static/lumina/battery.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/battery.png
     - name: carOverlayImage
       label: Car Overlay Image URL
       type: TEXT
-      default: /static/lumina/car.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/car.png
     - name: poolOverlayImage
       label: Pool Overlay Image URL
       type: TEXT
-      default: /static/lumina/Pool.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/Pool.png
     - name: heatPumpType
       label: Heat Pump Type (source/classic/custom)
       type: TEXT
@@ -192,19 +192,19 @@ props:
     - name: heatPumpOverlayImage
       label: Source Heat Pump Overlay Image URL
       type: TEXT
-      default: /static/lumina/heatpump.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/heatpump.png
     - name: classicHeatPumpOverlayImage
       label: Classic Heat Pump Overlay Image URL
       type: TEXT
-      default: /static/lumina/heat-pump2.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/heat-pump2.png
     - name: customHeatPumpOverlayImage
       label: Custom Heat Pump Overlay Image URL
       type: TEXT
-      default: /static/lumina/heatpump.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/heatpump.png
     - name: turbineOverlayImage
       label: Turbine Overlay Image URL
       type: TEXT
-      default: /static/lumina/turbine.png
+      default: /static/widgets/energy/lumina-energy/lumina-images/turbine.png
   parameterGroups: []
 component: f7-card
 config:
@@ -363,7 +363,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath1
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 155.2 196.8 L 270 232 L 410 275 L 524.8 310.2' : 'M 524.8 310.2 L 410 275 L 270 232 L 155.2 196.8'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 157.4 190.4 L 270 232 L 400 280 L 512.6 321.6' : 'M 512.6 321.6 L 400 280 L 270 232 L 157.4 190.4'"
                           fill: none
                       - component: mask
                         config:
@@ -426,7 +426,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath2
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 160.6 190 L 275 226 L 415 270 L 529.4 306' : 'M 529.4 306 L 415 270 L 275 226 L 160.6 190'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 162.1 185.4 L 275 226 L 403 272 L 515.9 312.6' : 'M 515.9 312.6 L 403 272 L 275 226 L 162.1 185.4'"
                           fill: none
                       - component: mask
                         config:
@@ -1024,7 +1024,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 400 280' : 'M 400 280 L 270 232'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1032,7 +1032,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 410 275' : 'M 410 275 L 270 232'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 270 232 L 400 280' : 'M 400 280 L 270 232'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1049,7 +1049,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 L 415 270' : 'M 415 270 L 275 226'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 L 403 272' : 'M 403 272 L 275 226'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1057,7 +1057,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 L 415 270' : 'M 415 270 L 275 226'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 275 226 L 403 272' : 'M 403 272 L 275 226'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
@@ -1261,7 +1261,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 590 348 L 510 388' : 'M 510 388 L 590 348 L 480 308'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 590 348 L 530 378' : 'M 530 378 L 590 348 L 480 308'"
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
@@ -1269,7 +1269,7 @@ slots:
                       - component: path
                         config:
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 590 348 L 510 388' : 'M 510 388 L 590 348 L 480 308'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 590 348 L 530 378' : 'M 530 378 L 590 348 L 480 308'"
                           class: luminaFlowShimmer
                           fill: none
                           stroke-width: 2.5
