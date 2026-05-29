@@ -320,11 +320,6 @@ slots:
 
                             .luminaValue { font-size: 12px; }
 
-                            .luminaFlowBase { fill: none !important;
-                            stroke-width: 1.5; stroke-linecap: round;
-                            stroke-linejoin: round; stroke-opacity: .22; filter:
-                            drop-shadow(0 0 3px currentColor); }
-
                             .luminaFlowShimmer { fill: none !important;
                             stroke-width: 5; stroke-linecap: round;
                             stroke-linejoin: round; opacity: 1; filter:
@@ -1028,6 +1023,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#00FFFF"
                       - component: path
                         config:
@@ -1053,6 +1049,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#0080ff"
                       - component: path
                         config:
@@ -1080,6 +1077,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
                             '#2ECC71' : '#F1C40F'"
@@ -1114,6 +1112,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#00f1f2"
                       - component: path
                         config:
@@ -1145,6 +1144,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "=(Number.parseFloat((items[props.gridPowerItem] &&
                             items[props.gridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
@@ -1176,6 +1176,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
                             '#FF9F1A' : '#4DA3FF'"
@@ -1211,6 +1212,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#7A5CFF"
                       - component: path
                         config:
@@ -1238,6 +1240,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#FF6B2E"
                       - component: path
                         config:
@@ -1265,6 +1268,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#44FFE3"
                       - component: path
                         config:
@@ -1293,6 +1297,7 @@ slots:
                           class: luminaFlowBase
                           fill: none
                           stroke-width: 1.5
+                          stroke-opacity: 0.35
                           stroke: "#FF4FD8"
                       - component: path
                         config:
