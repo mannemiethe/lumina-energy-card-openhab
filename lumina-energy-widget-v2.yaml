@@ -376,9 +376,10 @@ slots:
                           id: luminaFlowPulseMask1
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -390,14 +391,16 @@ slots:
                                         items[props.pvPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath1"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -409,6 +412,7 @@ slots:
                                         items[props.pvPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -431,9 +435,10 @@ slots:
                           id: luminaFlowPulseMask2
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -446,14 +451,16 @@ slots:
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
                                         's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath2"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -466,6 +473,7 @@ slots:
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
                                         's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -489,9 +497,10 @@ slots:
                           id: luminaFlowPulseMask3
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -504,14 +513,16 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath3"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -524,6 +535,7 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -534,7 +546,7 @@ slots:
                           id: luminaFlowMotionPath4
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0) >=
-                            0) ? 'M 480 263 L 566 235 L 475 210' : 'M 475 210 L 566 235 L 480 263'"
+                            0) ? 'M 480 263 L 547 241 Q 566 235 547 230 L 475 210' : 'M 475 210 L 547 230 Q 566 235 547 241 L 480 263'"
                           fill: none
                       - component: mask
                         config:
@@ -547,9 +559,10 @@ slots:
                           id: luminaFlowPulseMask4
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -564,14 +577,16 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath4"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -586,6 +601,7 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -595,7 +611,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath5
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 614 233 L 503 269' : 'M 503 269 L 614 233 L 616 200'"
+                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 616 200 L 615 218 Q 614 233 595 239 L 503 269' : 'M 503 269 L 595 239 Q 614 233 615 218 L 616 200'"
                           fill: none
                       - component: mask
                         config:
@@ -608,9 +624,10 @@ slots:
                           id: luminaFlowPulseMask5
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -623,14 +640,16 @@ slots:
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
                                         's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath5"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -643,6 +662,7 @@ slots:
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
                                         's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -653,7 +673,7 @@ slots:
                           id: luminaFlowMotionPath6
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
-                            'M 601.4 200 L 600 220 L 508 198' : 'M 508 198 L 600 220 L 601.4 200'"
+                            'M 601.4 200 L 600.7 210 Q 600 220 581 215 L 508 198' : 'M 508 198 L 581 215 Q 600 220 600.7 210 L 601.4 200'"
                           fill: none
                       - component: mask
                         config:
@@ -666,9 +686,10 @@ slots:
                           id: luminaFlowPulseMask6
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -681,14 +702,16 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath6"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -701,6 +724,7 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -710,7 +734,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath7
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
-                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 L 520 305 L 620 270' : 'M 620 270 L 520 305 L 504 300'"
+                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 504 300 L 511 302 Q 520 305 539 298 L 620 270' : 'M 620 270 L 539 298 Q 520 305 511 302 L 504 300'"
                           fill: none
                       - component: mask
                         config:
@@ -723,9 +747,10 @@ slots:
                           id: luminaFlowPulseMask7
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -737,14 +762,16 @@ slots:
                                         items[props.evPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath7"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -756,6 +783,7 @@ slots:
                                         items[props.evPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -765,7 +793,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath8
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 L 630 350 L 720 310' : 'M 720 310 L 630 350 L 495 306'"
+                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 495 306 L 601 341 Q 630 350 658 338 L 720 310' : 'M 720 310 L 658 338 Q 630 350 601 341 L 495 306'"
                           fill: none
                       - component: mask
                         config:
@@ -778,9 +806,10 @@ slots:
                           id: luminaFlowPulseMask8
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -792,14 +821,16 @@ slots:
                                         items[props.ev2PowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath8"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -811,6 +842,7 @@ slots:
                                         items[props.ev2PowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -820,7 +852,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath9
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 590 348 L 510 388' : 'M 510 388 L 590 348 L 480 308'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 480 308 L 562 338 Q 590 348 563 361 L 510 388' : 'M 510 388 L 563 361 Q 590 348 562 338 L 480 308'"
                           fill: none
                       - component: mask
                         config:
@@ -833,9 +865,10 @@ slots:
                           id: luminaFlowPulseMask9
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -848,14 +881,16 @@ slots:
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
                                         's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath9"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -868,6 +903,7 @@ slots:
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
                                         's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -891,9 +927,10 @@ slots:
                           id: luminaFlowPulseMask10
                         slots:
                           default:
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 70
+                                rx: 70
+                                ry: 35
                                 fill: url(#luminaPulseGradient)
                               slots:
                                 default:
@@ -906,14 +943,16 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
                                           config:
                                             xlink:href: "#luminaFlowMotionPath10"
-                            - component: circle
+                            - component: ellipse
                               config:
-                                r: 35
+                                rx: 35
+                                ry: 15
                                 fill: white
                               slots:
                                 default:
@@ -926,6 +965,7 @@ slots:
                                         || 0)), 12000) / 12000 *
                                         2.45).toFixed(2) + 's'
                                       repeatCount: indefinite
+                                      rotate: auto
                                     slots:
                                       default:
                                         - component: mpath
@@ -2357,3 +2397,7 @@ slots:
               stylesheet: |
                 .lumina-energy-widget .card-header { display:none; }
                 .lumina-energy-widget a { cursor:pointer; }
+
+
+
+
