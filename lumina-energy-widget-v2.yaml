@@ -363,7 +363,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath1
                           d: "=(Number.parseFloat((items[props.pvPowerItem] &&
-                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 241.3 223.2 L 270 232 L 410 275 L 438.7 283.8' : 'M 438.7 283.8 L 410 275 L 270 232 L 241.3 223.2'"
+                            items[props.pvPowerItem].state) || 0) >= 0) ? 'M 155.2 196.8 L 270 232 L 410 275 L 524.8 310.2' : 'M 524.8 310.2 L 410 275 L 270 232 L 155.2 196.8'"
                           fill: none
                       - component: mask
                         config:
@@ -387,6 +387,8 @@ slots:
                                     config:
                                       begin: 0s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
                                         items[props.pvPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
@@ -408,6 +410,8 @@ slots:
                                     config:
                                       begin: 0s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.pvPowerItem] &&
                                         items[props.pvPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
@@ -422,7 +426,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath2
                           d: "=(Number.parseFloat((items[props.windPowerItem] &&
-                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 246.4 217 L 275 226 L 415 270 L 443.6 279' : 'M 443.6 279 L 415 270 L 275 226 L 246.4 217'"
+                            items[props.windPowerItem].state) || 0) >= 0) ? 'M 160.6 190 L 275 226 L 415 270 L 529.4 306' : 'M 529.4 306 L 415 270 L 275 226 L 160.6 190'"
                           fill: none
                       - component: mask
                         config:
@@ -446,6 +450,8 @@ slots:
                                     config:
                                       begin: -.35s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] &&
                                         items[props.windPowerItem].state) ||
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
@@ -468,6 +474,8 @@ slots:
                                     config:
                                       begin: -.35s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.windPowerItem] &&
                                         items[props.windPowerItem].state) ||
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
@@ -484,7 +492,7 @@ slots:
                           id: luminaFlowMotionPath3
                           d: "=(Number.parseFloat((items[props.batteryPowerItem] &&
                             items[props.batteryPowerItem].state) || 0) >= 0) ?
-                            'M 444.3 282.1 L 416 292 L 353 314 L 324.7 323.9' : 'M 324.7 323.9 L 353 314 L 416 292 L 444.3 282.1'"
+                            'M 529.2 252.4 L 416 292 L 353 314 L 239.8 353.6' : 'M 239.8 353.6 L 353 314 L 416 292 L 529.2 252.4'"
                           fill: none
                       - component: mask
                         config:
@@ -508,6 +516,8 @@ slots:
                                     config:
                                       begin: -.7s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem]
                                         && items[props.batteryPowerItem].state)
                                         || 0)), 12000) / 12000 *
@@ -530,6 +540,8 @@ slots:
                                     config:
                                       begin: -.7s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.batteryPowerItem]
                                         && items[props.batteryPowerItem].state)
                                         || 0)), 12000) / 12000 *
@@ -546,7 +558,7 @@ slots:
                           id: luminaFlowMotionPath4
                           d: "=(Number.parseFloat((items[props.homeInverterPowerItem] &&
                             items[props.homeInverterPowerItem].state) || 0) >=
-                            0) ? 'M 451.5 272.4 L 480 263 L 547 241 Q 566 235 547 230 L 475 210 L 446.1 202' : 'M 446.1 202 L 475 210 L 547 230 Q 566 235 547 241 L 480 263 L 451.5 272.4'"
+                            0) ? 'M 366 300.6 L 480 263 L 547 241 Q 566 235 547 230 L 475 210 L 359.4 178' : 'M 359.4 178 L 475 210 L 547 230 Q 566 235 547 241 L 480 263 L 366 300.6'"
                           fill: none
                       - component: mask
                         config:
@@ -570,6 +582,8 @@ slots:
                                     config:
                                       begin: -1.05s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 -
                                         Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem]
                                         &&
@@ -594,6 +608,8 @@ slots:
                                     config:
                                       begin: -1.05s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 -
                                         Math.min(Math.abs(Number.parseFloat((items[props.homeInverterPowerItem]
                                         &&
@@ -611,7 +627,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath5
                           d: "=(Number.parseFloat((items[props.gridPowerItem] &&
-                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 617.7 170.1 L 616 200 L 615 218 Q 614 233 595 239 L 503 269 L 474.5 278.3' : 'M 474.5 278.3 L 503 269 L 595 239 Q 614 233 615 218 L 616 200 L 617.7 170.1'"
+                            items[props.gridPowerItem].state) || 0) >= 0) ? 'M 622.8 80.4 L 616 200 L 615 218 Q 614 233 595 239 L 503 269 L 389 306.2' : 'M 389 306.2 L 503 269 L 595 239 Q 614 233 615 218 L 616 200 L 622.8 80.4'"
                           fill: none
                       - component: mask
                         config:
@@ -635,6 +651,8 @@ slots:
                                     config:
                                       begin: -1.4s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
                                         items[props.gridPowerItem].state) ||
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
@@ -657,6 +675,8 @@ slots:
                                     config:
                                       begin: -1.4s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.gridPowerItem] &&
                                         items[props.gridPowerItem].state) ||
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
@@ -673,7 +693,7 @@ slots:
                           id: luminaFlowMotionPath6
                           d: "=(Number.parseFloat((items[props.homeGridPowerItem] &&
                             items[props.homeGridPowerItem].state) || 0) >= 0) ?
-                            'M 603.5 170.1 L 601.4 200 L 600.7 210 Q 600 220 581 215 L 508 198 L 478.8 191.2' : 'M 478.8 191.2 L 508 198 L 581 215 Q 600 220 600.7 210 L 601.4 200 L 603.5 170.1'"
+                            'M 609.8 80.4 L 601.4 200 L 600.7 210 Q 600 220 581 215 L 508 198 L 391.2 170.8' : 'M 391.2 170.8 L 508 198 L 581 215 Q 600 220 600.7 210 L 601.4 200 L 609.8 80.4'"
                           fill: none
                       - component: mask
                         config:
@@ -697,6 +717,8 @@ slots:
                                     config:
                                       begin: -1.75s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem]
                                         && items[props.homeGridPowerItem].state)
                                         || 0)), 12000) / 12000 *
@@ -719,6 +741,8 @@ slots:
                                     config:
                                       begin: -1.75s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.homeGridPowerItem]
                                         && items[props.homeGridPowerItem].state)
                                         || 0)), 12000) / 12000 *
@@ -734,7 +758,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath7
                           d: "=(Number.parseFloat((items[props.evPowerItem] &&
-                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 475.2 291.8 L 504 300 L 511 302 Q 520 305 539 298 L 620 270 L 648.4 260.2' : 'M 648.4 260.2 L 620 270 L 539 298 Q 520 305 511 302 L 504 300 L 475.2 291.8'"
+                            items[props.evPowerItem].state) || 0) >= 0) ? 'M 388.8 267.2 L 504 300 L 511 302 Q 520 305 539 298 L 620 270 L 733.6 230.8' : 'M 733.6 230.8 L 620 270 L 539 298 Q 520 305 511 302 L 504 300 L 388.8 267.2'"
                           fill: none
                       - component: mask
                         config:
@@ -758,6 +782,8 @@ slots:
                                     config:
                                       begin: -2.1s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] &&
                                         items[props.evPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
@@ -779,6 +805,8 @@ slots:
                                     config:
                                       begin: -2.1s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.evPowerItem] &&
                                         items[props.evPowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
@@ -793,7 +821,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath8
                           d: "=(Number.parseFloat((items[props.ev2PowerItem] &&
-                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 466.5 296.6 L 495 306 L 601 341 Q 630 350 658 338 L 720 310 L 747.4 297.6' : 'M 747.4 297.6 L 720 310 L 658 338 Q 630 350 601 341 L 495 306 L 466.5 296.6'"
+                            items[props.ev2PowerItem].state) || 0) >= 0) ? 'M 381 268.4 L 495 306 L 601 341 Q 630 350 658 338 L 720 310 L 829.6 260.4' : 'M 829.6 260.4 L 720 310 L 658 338 Q 630 350 601 341 L 495 306 L 381 268.4'"
                           fill: none
                       - component: mask
                         config:
@@ -817,6 +845,8 @@ slots:
                                     config:
                                       begin: -2.45s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
                                         items[props.ev2PowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
@@ -838,6 +868,8 @@ slots:
                                     config:
                                       begin: -2.45s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.ev2PowerItem] &&
                                         items[props.ev2PowerItem].state) || 0)),
                                         12000) / 12000 * 2.45).toFixed(2) + 's'
@@ -852,7 +884,7 @@ slots:
                         config:
                           id: luminaFlowMotionPath9
                           d: "=(Number.parseFloat((items[props.poolPowerItem] &&
-                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 451.8 297.7 L 480 308 L 562 338 Q 590 348 563 361 L 510 388 L 483.3 401.6' : 'M 483.3 401.6 L 510 388 L 563 361 Q 590 348 562 338 L 480 308 L 451.8 297.7'"
+                            items[props.poolPowerItem].state) || 0) >= 0) ? 'M 367.2 266.8 L 480 308 L 562 338 Q 590 348 563 361 L 510 388 L 403.2 442.4' : 'M 403.2 442.4 L 510 388 L 563 361 Q 590 348 562 338 L 480 308 L 367.2 266.8'"
                           fill: none
                       - component: mask
                         config:
@@ -876,6 +908,8 @@ slots:
                                     config:
                                       begin: -2.65s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
                                         items[props.poolPowerItem].state) ||
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
@@ -898,6 +932,8 @@ slots:
                                     config:
                                       begin: -2.65s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.poolPowerItem] &&
                                         items[props.poolPowerItem].state) ||
                                         0)), 12000) / 12000 * 2.45).toFixed(2) +
@@ -914,7 +950,7 @@ slots:
                           id: luminaFlowMotionPath10
                           d: "=(Number.parseFloat((items[props.heatPumpPowerItem] &&
                             items[props.heatPumpPowerItem].state) || 0) >= 0) ?
-                            'M 439.2 219.2 L 410 226 L 363 237 L 333.8 243.8' : 'M 333.8 243.8 L 363 237 L 410 226 L 439.2 219.2'"
+                            'M 526.8 198.8 L 410 226 L 363 237 L 246.2 264.2' : 'M 246.2 264.2 L 363 237 L 410 226 L 526.8 198.8'"
                           fill: none
                       - component: mask
                         config:
@@ -938,6 +974,8 @@ slots:
                                     config:
                                       begin: -2.8s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem]
                                         && items[props.heatPumpPowerItem].state)
                                         || 0)), 12000) / 12000 *
@@ -960,6 +998,8 @@ slots:
                                     config:
                                       begin: -2.8s
                                       calcMode: linear
+                                      keyTimes: '0;0.12;1'
+                                      keyPoints: '0;0;1'
                                       dur: =(2.8 - Math.min(Math.abs(Number.parseFloat((items[props.heatPumpPowerItem]
                                         && items[props.heatPumpPowerItem].state)
                                         || 0)), 12000) / 12000 *
